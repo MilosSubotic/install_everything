@@ -4,13 +4,16 @@
 mkdir tmp/
 pushd tmp/
 
+sudo ls
 
 ###############################################################################
 # Global stuff.
 
+sudo apt-get update
+sudo apt-get upgrade
+
 mkdir ~/local/
 mkdir ~/bin/
-
 
 ###############################################################################
 # Git.
@@ -20,7 +23,7 @@ git config --global user.email "milos.subotic.sm@gmail.com"
 
 
 ###############################################################################
-# Installing julia.
+# Julia.
 
 wget https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.4-linux-x86_64.tar.gz
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.2-linux-x86_64.tar.gz
@@ -39,6 +42,20 @@ ln -s ../local/julia/julia-0.6.4/bin/julia julia064
 ln -s ../local/julia/julia-1.0.2/bin/julia julia102
 ln -s julia102 julia
 popd
+
+###############################################################################
+# Worker.
+
+git clone https://github.com/MilosSubotic/worker_install
+pushd worker_install/
+./install_worker.sh
+popd
+
+###############################################################################
+# Atom.
+
+wget https://atom.io/download/deb -O atom-amd64.deb
+sudo dpkg -i atom-amd64.deb
 
 ###############################################################################
 
