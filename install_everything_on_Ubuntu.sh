@@ -57,6 +57,18 @@ popd
 wget https://atom.io/download/deb -O atom-amd64.deb
 sudo dpkg -i atom-amd64.deb
 
+#curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+#sudo sh -c 'echo "deb [arch=amd64]
+#sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+#sudo apt-get update
+#sudo apt-get install atom
+
+###############################################################################
+# Beyond Compare.
+
+wget https://www.scootersoftware.com/bcompare-4.2.8.23479_amd64.deb
+sudo dpkg -i bcompare-4.2.8.23479_amd64.deb
+
 ###############################################################################
 
 popd
@@ -65,4 +77,3 @@ rm -rf tmp/
 echo "End"
 
 ###############################################################################
-
