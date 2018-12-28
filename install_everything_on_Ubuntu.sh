@@ -12,8 +12,8 @@ sudo ls
 sudo apt-get update
 sudo apt-get upgrade
 
-mkdir ~/local/
-mkdir ~/bin/
+mkdir -p ~/local/
+mkdir -p ~/bin/
 
 ###############################################################################
 # Git.
@@ -28,7 +28,7 @@ git config --global user.email "milos.subotic.sm@gmail.com"
 wget https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.4-linux-x86_64.tar.gz
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.2-linux-x86_64.tar.gz
 
-mkdir ~/local/julia
+mkdir -p ~/local/julia
 
 tar xfv julia-0.6.4-linux-x86_64.tar.gz -C ~/local/julia
 tar xfv julia-1.0.2-linux-x86_64.tar.gz -C ~/local/julia
