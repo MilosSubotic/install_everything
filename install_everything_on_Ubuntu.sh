@@ -20,7 +20,8 @@ mkdir -p ~/bin/
 
 git config --global user.name "Milos Subotic"
 git config --global user.email "milos.subotic.sm@gmail.com"
-
+# To solve problem with unicode file names.
+git config --global core.quotePath false
 
 ###############################################################################
 # Julia.
