@@ -9,8 +9,8 @@ sudo ls
 ###############################################################################
 # Global stuff.
 
-sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get -y update
+sudo apt-get -y upgrade
 
 mkdir -p ~/local/
 mkdir -p ~/bin/
@@ -39,14 +39,17 @@ mv julia-9d11f62bcb/ julia-0.6.4/
 popd
 
 pushd ~/bin/
-ln -s ../local/julia/julia-0.6.4/bin/julia julia064
-ln -s ../local/julia/julia-1.0.3/bin/julia julia103
-ln -s julia103 julia
+ln -sf ../local/julia/julia-0.6.4/bin/julia julia064
+ln -sf ../local/julia/julia-1.0.3/bin/julia julia103
+ln -sf julia103 julia
 popd
 
 F=~/.juliarc.jl
 mkdir -p $(dirname $F)
-cp $F $F.backup-$(date +%F-%T | sed 's/:/-/g')
+if test -f $F
+then
+	cp $F $F.backup-$(date +%F-%T | sed 's/:/-/g')
+fi
 cat > $F << EOF
 push!(LOAD_PATH, ".")
 
@@ -64,7 +67,10 @@ EOF
 
 F=~/.julia/config/startup.jl
 mkdir -p $(dirname $F)
-cp $F $F.backup-$(date +%F-%T | sed 's/:/-/g')
+if test -f $F
+then
+	cp $F $F.backup-$(date +%F-%T | sed 's/:/-/g')
+fi
 cat > $F << EOF
 push!(LOAD_PATH, ".")
 
