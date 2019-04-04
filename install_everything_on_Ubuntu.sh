@@ -98,6 +98,18 @@ sudo dpkg -i atom-amd64.deb
 #sudo apt-get update
 #sudo apt-get install atom
 
+# Install settings.
+cp -rv .atom/ ~/
+
+# Install packages.
+apm install language-julia
+apm install language-matlab linter-matlab
+apm install graphviz-preview-plus language-dot
+apm install latex latexer language-latex latex-autocomplete
+apm install language-markdown
+apm install language-vhdl language-verilog language-tcl
+apm install teletype file-watcher
+
 ###############################################################################
 # Beyond Compare.
 

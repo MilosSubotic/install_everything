@@ -1,0 +1,22 @@
+"*":
+  core:
+    disabledPackages: [
+      "linter-matlab"
+      "latex-autocomplete"
+      "language-gfm"
+    ]
+    telemetryConsent: "limited"
+  editor:
+    fontSize: 23
+    preferredLineLength: 79
+    showIndentGuide: true
+    showInvisibles: true
+    softTabs: false
+    tabLength: 4
+    tabType: "hard"
+  "exception-reporting":
+    userId: "b17699f6-9c86-0fef-5dc2-59be9d6f1862"
+  welcome:
+    showOnStartup: false
+  whitespace:
+    removeTrailingWhitespace: false

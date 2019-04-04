@@ -1,0 +1,5 @@
+'atom-text-editor:not([mini])':
+  'ctrl-d': 'editor:delete-line'
+
+'atom-text-editor':
+  'ctrl-shift-\'': 'spell-check:toggle'
