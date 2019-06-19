@@ -23,6 +23,12 @@ git config --global user.email "milos.subotic.sm@gmail.com"
 # To solve problem with unicode file names.
 git config --global core.quotePath false
 
+cat >> ~/.profile << EOF
+alias gs='git status'
+alias gcm='git commit -m'
+alias gcam='git commit -a -m'
+EOF
+
 ###############################################################################
 # Julia.
 
