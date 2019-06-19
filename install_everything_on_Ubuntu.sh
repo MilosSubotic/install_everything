@@ -24,7 +24,7 @@ git config --global user.email "milos.subotic.sm@gmail.com"
 git config --global core.quotePath false
 
 cat >> ~/.profile << EOF
-alias gs='git status'
+alias gsta='git status'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
 EOF
