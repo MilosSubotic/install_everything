@@ -27,6 +27,13 @@ cat >> ~/.bashrc << EOF
 alias gsta='git status'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
+alias gad='git add'
+function gl() {
+	git log -1 --skip=`expr $1 - 1`
+}
+function glsha() {
+	git log -1 --skip=`expr $1 - 1` --format="%H"
+}
 EOF
 
 ###############################################################################
