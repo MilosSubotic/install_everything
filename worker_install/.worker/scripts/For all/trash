@@ -1,0 +1,63 @@
+#!/bin/sh
+# This script is move files or folers in trash.
+# First, parameters are conerted from relativ to absolute path if necessary, and then move that file to trash.
+# Copy this script in some of $PATH folders
+
+# trash folders:
+TrashFiles="$HOME/.local/share/Trash/files/"
+TrashInfo="$HOME/.local/share/Trash/info/"
+
+# Function for moving files in trash and making trashinfo for their later restore.
+# TODO: This version of script don't put deletion time and date in trashinfo!
+Move()
+{
+
+	file=${1##*/}										# Extract filename from path.
+	if [ -z $(ls -a $TrashFiles | grep -x "$file") ] 	# If don't exist file in trash with same name like $file?
+	then												# Then move file to trash with original filename
+		mv "$1" "$TrashFiles$file"						# and make trashinfo file with filename.trashinfo filename.
+		echo -e "[Trash Info]\nPath=$1\nDeletionDate="`date +%FT%T` > $TrashInfo$file".trashinfo"
+	else												# Else there is already file with same filename.
+		base=${file%%.*}								# Extract base and extension from filename
+		ext=${file#*.}
+		if [ "$base" != "$ext" ]						# If base and extension are not same?
+		then
+			ext="."$ext									# Then extension get all fullstops.
+		else
+			ext=""										# Else there is no extension.
+		fi
+		num=2
+		while :											# Putting numbers biger than 1 between base and extension
+		do												# And seek for first free name with that number.
+			if [ -z $(ls -a $TrashFiles | grep -x "$base.$num$ext") ]
+			then
+				mv "$1" "$TrashFiles$base.$num$ext"
+				echo -e "[Trash Info]\nPath=$1\nDeletionDate="`date +%FT%T` > "$TrashInfo$base.$num$ext.trashinfo"
+				break
+			else
+				num=$( expr $num + 1 )
+			fi
+		done
+	fi	
+
+}
+
+# Begin of script.
+# First, parameters are conerted from relativ to absolute path if necessary, and then move that file to trash.
+
+for param
+do
+	param=${param%/}			# Erase last / .
+	Pdir=${param%/*}			# Dir path.
+	Pfile=${param##*/}			# Filename.
+	if [ "$Pdir" == "$Pfile" ]  
+	then
+		Pdir="./"	
+	fi
+	Ptemp=$PWD
+	cd "$Pdir"
+	Move "$PWD/$Pfile"						# Move path in trash.
+	cd "$Ptemp"
+done
+
+exit 0

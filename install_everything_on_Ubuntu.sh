@@ -1,8 +1,6 @@
 #!/bin/bash
 ###############################################################################
-
-mkdir tmp/
-pushd tmp/
+# Just to obtain sudo rights.
 
 sudo ls
 
@@ -18,23 +16,20 @@ mkdir -p ~/bin/
 ###############################################################################
 # Git.
 
-git config --global user.name "Milos Subotic"
-git config --global user.email "milos.subotic.sm@gmail.com"
-# To solve problem with unicode file names.
-git config --global core.quotePath false
+./setup_git_stuff.sh
 
-cat >> ~/.bashrc << EOF
-alias gsta='git status'
-alias gcm='git commit -m'
-alias gcam='git commit -a -m'
-alias gad='git add'
-function gl() {
-	git log -1 --skip=`expr $1 - 1`
-}
-function glsha() {
-	git log -1 --skip=`expr $1 - 1` --format="%H"
-}
-EOF
+###############################################################################
+# Worker.
+
+pushd worker_install/
+./install_worker.sh
+popd
+
+###############################################################################
+# Doing all package downloading and unpacking in tmp dir.
+
+mkdir tmp/
+pushd tmp/
 
 ###############################################################################
 # Julia.
@@ -96,14 +91,6 @@ end
 
 using Revise
 EOF
-
-###############################################################################
-# Worker.
-
-git clone https://github.com/MilosSubotic/worker_install
-pushd worker_install/
-./install_worker.sh
-popd
 
 ###############################################################################
 # Atom.

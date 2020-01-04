@@ -1,0 +1,10 @@
+bookmarks {
+	entry {
+		name = "/home/neon_knight/ELEKTRONIKA/A PROGRAM CODE/C++";
+		useparent = false;
+	}
+	entry {
+		name = "/var/cache/apt/archives";
+		useparent = false;
+	}
+}
