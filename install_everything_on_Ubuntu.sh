@@ -36,11 +36,13 @@ pushd tmp/
 
 wget https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.4-linux-x86_64.tar.gz
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.3-linux-x86_64.tar.gz
+wget https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.5-linux-x86_64.tar.gz
 
 mkdir -p ~/local/julia
 
 tar xfv julia-0.6.4-linux-x86_64.tar.gz -C ~/local/julia
 tar xfv julia-1.0.3-linux-x86_64.tar.gz -C ~/local/julia
+tar xfv julia-1.0.5-linux-x86_64.tar.gz -C ~/local/julia
 
 pushd ~/local/julia/
 mv julia-9d11f62bcb/ julia-0.6.4/
@@ -49,7 +51,8 @@ popd
 pushd ~/bin/
 ln -sf ../local/julia/julia-0.6.4/bin/julia julia064
 ln -sf ../local/julia/julia-1.0.3/bin/julia julia103
-ln -sf julia103 julia
+ln -sf ../local/julia/julia-1.0.5/bin/julia julia105lts
+ln -sf julia105lts julia
 popd
 
 F=~/.juliarc.jl
@@ -60,17 +63,6 @@ then
 fi
 cat > $F << EOF
 push!(LOAD_PATH, ".")
-
-#if VERSION >= v"0.7"
-#    using Pkg
-#end
-#for pkg in ["Revise"]
-#    if !haskey(Pkg.installed(), pkg)
-#        Pkg.add(pkg)
-#    end
-#end
-#
-#using Revise
 EOF
 
 F=~/.julia/config/startup.jl
