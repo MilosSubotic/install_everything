@@ -1088,7 +1088,7 @@ buttons {
 	}
 	button {
 		position = 10;
-		title = "F8 - DELETE";
+		title = "F8 - To trash";
 		color = 1,0;
 		shortkeys {
 			normal {
@@ -1118,9 +1118,17 @@ buttons {
 	}
 	button {
 		position = 11;
-		title = "delete";
+		title = "Delete";
 		color = 1,0;
 		shortkeys {
+			normal {
+				key = "F8";
+				mod = shift;
+			}
+			normal {
+				key = "Delete";
+				mod = shift;
+			}
 		}
 		commands {
 			DeleteOp {
