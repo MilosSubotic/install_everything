@@ -73,15 +73,6 @@ then
 fi
 cat > $F << EOF
 push!(LOAD_PATH, ".")
-
-using Pkg
-for pkg in ["Revise"]
-    if !haskey(Pkg.installed(), pkg)
-        Pkg.add(pkg)
-    end
-end
-
-using Revise
 EOF
 
 ###############################################################################
