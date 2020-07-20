@@ -9,7 +9,7 @@ sudo ls
 
 if [[ "$http_proxy" != "" ]];
 then
-	echo "Acquire::http::Proxy $http_proxy;" > 05proxy
+	echo "Acquire::http::Proxy \"$http_proxy;\"" > 05proxy
 	sudo mv 05proxy /etc/apt/apt.conf.d/05proxy
 fi
 
