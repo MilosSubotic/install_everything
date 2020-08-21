@@ -5,6 +5,20 @@
 sudo ls
 
 ###############################################################################
+# Check is this Ubuntu.
+
+DIST=`lsb_release --id | sed 's/^Distributor ID:[\t ]*\(.*\)$/\1/'`
+if [[ "$DIST" != "Ubuntu" ]]
+then
+	echo "This install script is made for Ubuntu GNU/Linux distribution!"
+	echo "You need to change it a little for your distribution!"
+	exit 1
+fi
+
+R=`lsb_release --release`
+MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
+
+###############################################################################
 # Global stuff.
 
 if [[ "$http_proxy" != "" ]];
@@ -13,8 +27,14 @@ then
 	sudo mv 05proxy /etc/apt/apt.conf.d/05proxy
 fi
 
-sudo apt-get -y update
-sudo apt-get -y upgrade
+sudo apt -y update
+sudo apt -y upgrade
+
+# 32b app support.
+sudo dpkg --add-architecture i386
+sudo apt -y install libc6:i386 libncurses5:i386 libstdc++6:i386
+
+sudo apt -y install git build-essential
 
 mkdir -p ~/local/
 mkdir -p ~/bin/
@@ -27,9 +47,17 @@ mkdir -p ~/bin/
 ###############################################################################
 # Worker.
 
-pushd worker_install/
-./install_worker.sh
-popd
+if (( $MAJOR >= 20 ))
+then
+	pushd worker_install/
+	./install_worker.sh
+	popd
+else
+	pushd worker_install/
+	./build_and_install_worker.sh
+	popd
+fi
+
 
 ###############################################################################
 # Doing all package downloading and unpacking in tmp dir.
@@ -38,38 +66,53 @@ mkdir tmp/
 pushd tmp/
 
 ###############################################################################
+# Atom.
+
+#wget https://atom.io/download/deb -O atom-amd64.deb
+#sudo dpkg -i atom-amd64.deb
+
+#curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+#sudo sh -c 'echo "deb [arch=amd64]
+#sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+#sudo apt update
+#sudo apt install atom
+
+wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
+sudo apt update
+sudo apt -y install atom
+
+# Install settings.
+cp -rv .atom/ ~/
+
+# Install packages.
+apm install language-matlab linter-matlab
+apm install language-markdown
+apm install language-vhdl language-verilog language-tcl
+
+###############################################################################
 # Julia.
 
-wget https://julialang-s3.julialang.org/bin/linux/x64/0.6/julia-0.6.4-linux-x86_64.tar.gz
-wget https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.3-linux-x86_64.tar.gz
-wget https://julialang-s3.julialang.org/bin/linux/x64/1.0/julia-1.0.5-linux-x86_64.tar.gz
+wget https://julialang-s3.julialang.org/bin/linux/x86/1.5/julia-1.5.0-linux-i686.tar.gz
 
 mkdir -p ~/local/julia
 
-tar xfv julia-0.6.4-linux-x86_64.tar.gz -C ~/local/julia
-tar xfv julia-1.0.3-linux-x86_64.tar.gz -C ~/local/julia
-tar xfv julia-1.0.5-linux-x86_64.tar.gz -C ~/local/julia
-
-pushd ~/local/julia/
-mv julia-9d11f62bcb/ julia-0.6.4/
-popd
+tar xfv julia-1.5.0-linux-i686.tar.gz -C ~/local/julia
 
 pushd ~/bin/
-ln -sf ../local/julia/julia-0.6.4/bin/julia julia064
-ln -sf ../local/julia/julia-1.0.3/bin/julia julia103
-ln -sf ../local/julia/julia-1.0.5/bin/julia julia105lts
-ln -sf julia105lts julia
+ln -sf ../local/julia/julia-1.5.0/bin/julia julia150
+ln -sf julia150 julia
 popd
 
-F=~/.juliarc.jl
-mkdir -p $(dirname $F)
-if test -f $F
-then
-	cp $F $F.backup-$(date +%F-%T | sed 's/:/-/g')
-fi
-cat > $F << EOF
-push!(LOAD_PATH, ".")
-EOF
+#F=~/.juliarc.jl
+#mkdir -p $(dirname $F)
+#if test -f $F
+#then
+#	cp $F $F.backup-$(date +%F-%T | sed 's/:/-/g')
+#fi
+#cat > $F << EOF
+#push!(LOAD_PATH, ".")
+#EOF
 
 F=~/.julia/config/startup.jl
 mkdir -p $(dirname $F)
@@ -81,35 +124,20 @@ cat > $F << EOF
 push!(LOAD_PATH, ".")
 EOF
 
-###############################################################################
-# Atom.
-
-wget https://atom.io/download/deb -O atom-amd64.deb
-sudo dpkg -i atom-amd64.deb
-
-#curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-#sudo sh -c 'echo "deb [arch=amd64]
-#sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-#sudo apt-get update
-#sudo apt-get install atom
-
-# Install settings.
-cp -rv .atom/ ~/
-
-# Install packages.
 apm install language-julia
-apm install language-matlab linter-matlab
-apm install graphviz-preview-plus language-dot
-apm install latex latexer language-latex latex-autocomplete
-apm install language-markdown
-apm install language-vhdl language-verilog language-tcl
-apm install teletype file-watcher
 
 ###############################################################################
 # Beyond Compare.
 
-wget https://www.scootersoftware.com/bcompare-4.2.8.23479_amd64.deb
-sudo dpkg -i bcompare-4.2.8.23479_amd64.deb
+wget https://www.scootersoftware.com/bcompare-4.3.5.24893_amd64.deb
+sudo dpkg -i bcompare-*.deb
+
+###############################################################################
+
+./install_waf_bash_completition.sh
+./install_latex.sh
+./install_kicad.sh
+#./install_arduino.sh
 
 ###############################################################################
 
