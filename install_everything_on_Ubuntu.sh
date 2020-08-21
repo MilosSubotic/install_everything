@@ -21,6 +21,9 @@ MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
 ###############################################################################
 # Global stuff.
 
+# For larger fonts.
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+
 if [[ "$http_proxy" != "" ]];
 then
 	echo "Acquire::http::Proxy \"$http_proxy;\"" > 05proxy
@@ -35,6 +38,7 @@ sudo dpkg --add-architecture i386
 sudo apt -y install libc6:i386 libncurses5:i386 libstdc++6:i386
 
 sudo apt -y install git build-essential
+
 
 mkdir -p ~/local/
 mkdir -p ~/bin/
