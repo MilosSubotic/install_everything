@@ -46,6 +46,7 @@ mkdir -p ~/bin/
 ###############################################################################
 # Git.
 
+sudo apt -y install git
 ./setup_git_stuff.sh
 
 ###############################################################################
@@ -87,7 +88,7 @@ sudo apt update
 sudo apt -y install atom
 
 # Install settings.
-cp -rv .atom/ ~/
+cp -rv ../.atom/ ~/
 
 # Install packages.
 apm install language-matlab linter-matlab
@@ -138,15 +139,17 @@ sudo dpkg -i bcompare-*.deb
 
 ###############################################################################
 
+popd
+rm -rf tmp/
+
+###############################################################################
+
 ./install_waf_bash_completition.sh
 ./install_latex.sh
 ./install_kicad.sh
 #./install_arduino.sh
 
 ###############################################################################
-
-popd
-rm -rf tmp/
 
 echo "End"
 
