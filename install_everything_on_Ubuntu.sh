@@ -23,6 +23,9 @@ MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
 
 # For larger fonts.
 gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+# For changing language.
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>Right']"
+gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Left']"
 
 if [[ "$http_proxy" != "" ]];
 then
