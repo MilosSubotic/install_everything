@@ -43,8 +43,8 @@ sudo apt -y install libc6:i386 libncurses5:i386 libstdc++6:i386
 sudo apt -y install git build-essential
 
 
-mkdir -p ~/local/
-mkdir -p ~/bin/
+mkdir -p ~/.local/bin/
+mkdir -p ~/.local/opt/
 
 ###############################################################################
 # Git.
@@ -103,12 +103,12 @@ apm install language-vhdl language-verilog language-tcl
 
 wget https://julialang-s3.julialang.org/bin/linux/x86/1.5/julia-1.5.0-linux-i686.tar.gz
 
-mkdir -p ~/local/julia
+mkdir -p ~/.local/opt/julia
 
-tar xfv julia-1.5.0-linux-i686.tar.gz -C ~/local/julia
+tar xfv julia-1.5.0-linux-i686.tar.gz -C ~/.local/opt/julia
 
-pushd ~/bin/
-ln -sf ../local/julia/julia-1.5.0/bin/julia julia150
+pushd ~/.local/bin/
+ln -sf ../opt/julia/julia-1.5.0/bin/julia julia150
 ln -sf julia150 julia
 popd
 
@@ -144,6 +144,11 @@ sudo dpkg -i bcompare-*.deb
 
 popd
 rm -rf tmp/
+
+###############################################################################
+# Install utils.
+
+cp utils/* ~/.local/bin/
 
 ###############################################################################
 
