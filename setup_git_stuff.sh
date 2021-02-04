@@ -4,6 +4,8 @@ git config --global user.name "Milos Subotic"
 git config --global user.email "milos.subotic.sm@gmail.com"
 # To solve problem with unicode file names.
 git config --global core.quotePath false
+# To save Personal access tokens.
+git config --global credential.helper cache
 
 cat >> ~/.bashrc << 'EOF'
 alias gsta='git status'
