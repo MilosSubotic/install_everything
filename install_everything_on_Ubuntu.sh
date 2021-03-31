@@ -141,6 +141,23 @@ wget https://www.scootersoftware.com/bcompare-4.3.5.24893_amd64.deb
 sudo dpkg -i bcompare-*.deb
 
 ###############################################################################
+# Discord.
+
+V=0.0.14
+wget https://dl.discordapp.net/apps/linux/$V/discord-$V.deb
+sudo dpkg -i discord-0.0.14.deb
+if [[ "$http_proxy" != "" ]];
+then
+	ADD='--proxy-server="proxy.uns.ac.rs:8080"'
+	WHAT="Exec=/usr/share/discord/Discord"
+	WHAT="${WHAT////\\/}"
+	F="/usr/share/discord/discord.desktop"
+	sudo sed -i "s/^$WHAT/$WHAT $ADD/g" "$F"
+	sudo xdg-desktop-menu install --manual "$F"
+	sudo xdg-desktop-icon install --manual "$F"
+fi
+
+###############################################################################
 
 popd
 rm -rf tmp/
