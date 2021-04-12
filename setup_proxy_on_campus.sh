@@ -3,7 +3,7 @@
 URL="proxy.uns.ac.rs"
 PORT="8080"
 
-F=~/tmp/etc/environment
+F=/etc/environment
 
 echo "http_proxy=\"http://$URL:$PORT/\"" >> $F
 echo "https_proxy=\"https://$URL:$PORT/\"" >> $F
