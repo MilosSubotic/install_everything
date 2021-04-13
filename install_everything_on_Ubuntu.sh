@@ -27,12 +27,6 @@ gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>Right']"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Left']"
 
-if [[ "$http_proxy" != "" ]];
-then
-	echo "Acquire::http::Proxy \"$http_proxy;\"" > 05proxy
-	sudo mv 05proxy /etc/apt/apt.conf.d/05proxy
-fi
-
 sudo apt -y update
 sudo apt -y upgrade
 

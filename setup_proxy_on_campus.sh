@@ -1,13 +1,21 @@
 #!/bin/bash
 
-URL="proxy.uns.ac.rs"
+URL="ftn.proxy"
 PORT="8080"
 
-F=/etc/environment
+#F=/etc/environment
+#echo "no_proxy=\"localhost,127.0.0.1,::1\"" >> $F
 
-echo "http_proxy=\"http://$URL:$PORT/\"" >> $F
-echo "https_proxy=\"https://$URL:$PORT/\"" >> $F
-echo "ftp_proxy=\"ftp://$URL:$PORT/\"" >> $F
-echo "socks_proxy=\"socks://$URL:$PORT/\"" >> $F
-echo "no_proxy=\"localhost,127.0.0.1,::1\"" >> $F
+gsettings set org.gnome.system.proxy mode manual
 
+function set_proxy() {
+	#echo "${1}_proxy=\"$1://$URL:$PORT/\"" >> $F
+	dbus-send --system --print-reply --dest=com.ubuntu.SystemService --type=method_call / com.ubuntu.SystemService.set_proxy string:"$1" string:"$1://$URL:$PORT"
+	gsettings set org.gnome.system.proxy.$1 host "$URL"
+	gsettings set org.gnome.system.proxy.$1 port "$PORT"
+}
+
+set_proxy http
+set_proxy https
+set_proxy ftp
+set_proxy socks
