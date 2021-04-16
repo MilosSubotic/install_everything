@@ -140,6 +140,7 @@ sudo dpkg -i bcompare-*.deb
 V=0.0.14
 wget https://dl.discordapp.net/apps/linux/$V/discord-$V.deb
 sudo dpkg -i discord-0.0.14.deb
+sudo apt -y --fix-broken install
 if [[ "$http_proxy" != "" ]];
 then
 	ADD='--proxy-server="proxy.uns.ac.rs:8080"'
@@ -150,6 +151,12 @@ then
 	sudo xdg-desktop-menu install --manual "$F"
 	sudo xdg-desktop-icon install --manual "$F"
 fi
+
+###############################################################################
+# Google Chrome.
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 ###############################################################################
 
