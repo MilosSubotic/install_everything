@@ -19,6 +19,12 @@ R=`lsb_release --release`
 MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
 
 ###############################################################################
+# Doing all package downloading and unpacking in tmp dir.
+
+mkdir tmp/
+pushd tmp/
+
+###############################################################################
 # Global stuff.
 
 # For larger fonts.
@@ -59,13 +65,6 @@ else
 	./build_and_install_worker.sh
 	popd
 fi
-
-
-###############################################################################
-# Doing all package downloading and unpacking in tmp dir.
-
-mkdir tmp/
-pushd tmp/
 
 ###############################################################################
 # Atom.
@@ -159,11 +158,6 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 ###############################################################################
-
-popd
-rm -rf tmp/
-
-###############################################################################
 # Install utils.
 
 cp utils/* ~/.local/bin/
@@ -174,6 +168,11 @@ cp utils/* ~/.local/bin/
 ./install_latex.sh
 ./install_kicad.sh
 #./install_arduino.sh
+
+###############################################################################
+
+popd
+rm -rf tmp/
 
 ###############################################################################
 
