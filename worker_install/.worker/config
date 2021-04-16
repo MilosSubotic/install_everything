@@ -1,4 +1,4 @@
-workerconfig 3.15.2;
+workerconfig 4.0.1;
 global {
 	lang = "builtin";
 	rows = 3;
@@ -259,7 +259,19 @@ hotkeys {
 			}
 		}
 		commands {
-			ParentDirOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "parentdir";
 			}
 		}
 	}
@@ -285,7 +297,19 @@ hotkeys {
 			}
 		}
 		commands {
-			RowUp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "up";
 			}
 		}
 	}
@@ -297,7 +321,19 @@ hotkeys {
 			}
 		}
 		commands {
-			RowDown {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "down";
 			}
 		}
 	}
@@ -309,7 +345,19 @@ hotkeys {
 			}
 		}
 		commands {
-			FirstRow {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "first";
 			}
 		}
 	}
@@ -321,7 +369,19 @@ hotkeys {
 			}
 		}
 		commands {
-			LastRow {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "last";
 			}
 		}
 	}
@@ -333,7 +393,19 @@ hotkeys {
 			}
 		}
 		commands {
-			PageUp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "pageup";
 			}
 		}
 	}
@@ -345,7 +417,19 @@ hotkeys {
 			}
 		}
 		commands {
-			PageDown {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "pagedown";
 			}
 		}
 	}
@@ -357,7 +441,19 @@ hotkeys {
 			}
 		}
 		commands {
-			SelectOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "selectentry";
 			}
 		}
 	}
@@ -369,7 +465,19 @@ hotkeys {
 			}
 		}
 		commands {
-			SimDDOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "simulate_doubleclick";
 			}
 		}
 	}
@@ -1292,7 +1400,19 @@ buttons {
 			}
 		}
 		commands {
-			SelectAllOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "selectall";
 			}
 		}
 	}
@@ -1306,7 +1426,19 @@ buttons {
 			}
 		}
 		commands {
-			SelectNoneOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "selectnone";
 			}
 		}
 	}
@@ -1759,7 +1891,19 @@ buttons {
 			}
 		}
 		commands {
-			InvertAllOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "invertall";
 			}
 		}
 	}
@@ -7203,6 +7347,18 @@ buttons {
 		commands {
 			ExternalVDirOp {
 				commandstring = "{scripts}/find_file_by_chksum.py -s {Rs{Checksum value to compare with:}{}} -l {Rs{File size limit (0 means no limit):}{0}} .";
+			}
+		}
+	}
+	button {
+		position = 588;
+		title = "git untracked as vdir";
+		color = 1,0;
+		shortkeys {
+		}
+		commands {
+			ExternalVDirOp {
+				commandstring = "{scripts}/git_untracked_files.sh";
 			}
 		}
 	}
