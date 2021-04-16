@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VER=1.8.12
+VER=1.8.13
 wget https://downloads.arduino.cc/arduino-$VER-linux64.tar.xz
 mkdir -p ~/.local/opt/arduino/
 tar xfv *.tar.xz -C ~/.local/opt/arduino
@@ -8,6 +8,12 @@ rm *.tar.xz
 pushd ~/.local/opt/arduino/arduino-$VER/
 sudo ./install.sh
 popd
+
+# To create .arduino15/preferences.txt
+arduino &
+ARDUINO_PID=$!
+sleep 5
+pkill -P $ARDUINO_PID
 
 function set_preference() {
 	SETTING_NAME="$1"
