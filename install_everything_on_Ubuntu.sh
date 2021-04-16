@@ -95,15 +95,15 @@ apm install language-vhdl language-verilog language-tcl
 ###############################################################################
 # Julia.
 
-wget https://julialang-s3.julialang.org/bin/linux/x86/1.5/julia-1.5.0-linux-i686.tar.gz
+wget https://julialang-s3.julialang.org/bin/linux/x86/1.6/julia-1.6.0-linux-i686.tar.gz
 
 mkdir -p ~/.local/opt/julia
 
-tar xfv julia-1.5.0-linux-i686.tar.gz -C ~/.local/opt/julia
+tar xfv julia-1.6.0-linux-i686.tar.gz -C ~/.local/opt/julia
 
 pushd ~/.local/bin/
-ln -sf ../opt/julia/julia-1.5.0/bin/julia julia150
-ln -sf julia150 julia
+ln -sf ../opt/julia/julia-1.6.0/bin/julia julia160
+ln -sf julia160 julia
 popd
 
 #F=~/.juliarc.jl
@@ -131,7 +131,7 @@ apm install language-julia
 ###############################################################################
 # Beyond Compare.
 
-wget https://www.scootersoftware.com/bcompare-4.3.5.24893_amd64.deb
+wget https://www.scootersoftware.com/bcompare-4.3.7.25118_amd64.deb
 sudo dpkg -i bcompare-*.deb
 
 ###############################################################################
