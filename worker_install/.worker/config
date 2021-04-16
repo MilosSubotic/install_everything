@@ -38,7 +38,7 @@ global {
 			}
 		}
 	}
-	terminal = "xterm -e %s";
+	terminal = "gnome-terminal -e %s";
 	ownerstyle = style1;
 	usestringfordirsize = false;
 	timesets {
