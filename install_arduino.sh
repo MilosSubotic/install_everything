@@ -1,13 +1,13 @@
 #!/bin/bash
 
-#VER=1.8.12
-#wget https://downloads.arduino.cc/arduino-$VER-linux64.tar.xz
-#mkdir -p ~/.local/opt/arduino/
-#tar xfv *.tar.xz -C ~/.local/opt/arduino
-#rm *.tar.xz
-#pushd ~/.local/opt/arduino/arduino-$VER/
-#sudo ./install.sh
-#popd
+VER=1.8.12
+wget https://downloads.arduino.cc/arduino-$VER-linux64.tar.xz
+mkdir -p ~/.local/opt/arduino/
+tar xfv *.tar.xz -C ~/.local/opt/arduino
+rm *.tar.xz
+pushd ~/.local/opt/arduino/arduino-$VER/
+sudo ./install.sh
+popd
 
 function set_preference() {
 	SETTING_NAME="$1"
@@ -30,4 +30,3 @@ set_preference serial.port /dev/ttyUSB0
 set_preference serial.port.file ttyUSB0
 set_preference serial.port.iserial null
 set_preference serial.debug_rate 115200
-
