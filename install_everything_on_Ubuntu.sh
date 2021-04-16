@@ -36,12 +36,19 @@ gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<
 sudo apt -y update
 sudo apt -y upgrade
 
+sudo apt -y install aptitude
+
 # 32b app support.
 sudo dpkg --add-architecture i386
 sudo apt -y install libc6:i386 libncurses5:i386 libstdc++6:i386
 
 sudo apt -y install git build-essential
 
+# Hack because newer Ubuntu does not have python2.
+if (( $MAJOR >= 20 ))
+then
+	ln -s `which python3` ~/.local/bin/python
+fi
 
 mkdir -p ~/.local/bin/
 mkdir -p ~/.local/opt/
