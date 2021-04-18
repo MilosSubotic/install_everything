@@ -47,7 +47,8 @@ sudo apt -y install git build-essential
 # Hack because newer Ubuntu does not have python2.
 if (( $MAJOR >= 20 ))
 then
-	ln -s `which python3` ~/.local/bin/python
+	#ln -s `which python3` ~/.local/bin/python
+	sudo apt -y install python-is-python3
 fi
 
 mkdir -p ~/.local/bin/
