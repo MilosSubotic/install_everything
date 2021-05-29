@@ -36,3 +36,6 @@ set_preference serial.port /dev/ttyUSB0
 set_preference serial.port.file ttyUSB0
 set_preference serial.port.iserial null
 set_preference serial.debug_rate 115200
+
+# For WAVGAT check this:
+#https://github.com/paraplin/wavgat-board
