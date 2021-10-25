@@ -7,3 +7,5 @@ sudo apt -y install hunspell-en-us hunspell-sr
 # Select some *.dic file from: /usr/share/hunspell/
 
 apm install latex language-latex
+
+patch -d$HOME/.atom/packages/latex/lib/openers/ -p1 < latex_evince.patch
