@@ -1,0 +1,2 @@
+Acquire::http::Proxy "http://ftn.proxy:8080";
+Acquire::https::Proxy "http://ftn.proxy:8080";
