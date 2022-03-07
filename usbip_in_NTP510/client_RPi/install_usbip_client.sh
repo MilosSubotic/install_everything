@@ -6,7 +6,9 @@ sudo apt -y install usbip
 sudo modprobe usbip_host
 echo 'usbip_host' | sudo tee -a /etc/modules >> /dev/null
 
-sudo cp usbipd.service /lib/systemd/system/usbipd.service
+sudo mkdir -p /usr/local/sbin/
+sudo cp usbipd_service.py /usr/local/sbin/
+sudo cp usbipd.service /lib/systemd/system/
 
 # reload systemd, enable, then start the service
 sudo systemctl --system daemon-reload

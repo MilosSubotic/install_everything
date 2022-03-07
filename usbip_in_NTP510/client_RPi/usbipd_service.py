@@ -5,11 +5,15 @@ devs_for_export = {
 
 import pyudev
 import time
+import subprocess
 
+usbip_cmd = 'usbip' # PC
+#usbip_cmd = '/usr/sbin/usbip' # RPi
 
 active_devs_for_export = {}
 for d in devs_for_export.keys():
 	active_devs_for_export[d] = False
+active_devs_for_export_busid = {}
 
 context = pyudev.Context()
 while True:
@@ -24,19 +28,36 @@ while True:
 		PID = PID.decode('ascii')
 		ID = VID + ':' + PID
 		active_devs.append(ID)
-		if ID == '16c0:05dc':
-			for a in dev.attributes.available_attributes:
-				print(a, ' : ', dev.attributes.get(a))
+		#if ID == '16c0:05dc':
+		#	for a in dev.attributes.available_attributes:
+		#		print(a, ' : ', dev.attributes.get(a))
 	
 	for d in active_devs_for_export:
 		if d in active_devs:
 			if not active_devs_for_export[d]:
 				active_devs_for_export[d] = True
 				print("Binding {} {}".format(d, devs_for_export[d]))
+				cmd = usbip_cmd + ' list -p -l'
+				r = subprocess.run(cmd.split(), stdout = subprocess.PIPE)
+				so = r.stdout.decode('ascii')
+				l = so.split('\n')
+				busid = None
+				for ll in l:
+					t = ll.split('#')
+					if len(t) == 3 and t[1] == 'usbid='+d:
+						busid = t[0]
+				if busid:
+					active_devs_for_export_busid[d] = busid
+					cmd = usbip_cmd + ' bind --' + busid
+					r = subprocess.run(cmd.split())
 		else:
 			if active_devs_for_export[d]:
 				active_devs_for_export[d] = False
 				print("Unbinding {} {}".format(d, devs_for_export[d]))
+				busid = active_devs_for_export_busid[d]
+				cmd = usbip_cmd + ' unbind --' + busid
+				r = subprocess.run(cmd.split())
+				
 	
 	break
 	time.sleep(1)
