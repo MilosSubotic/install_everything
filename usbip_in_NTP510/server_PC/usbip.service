@@ -3,10 +3,8 @@ Description=usbip client
 After=network.target
 
 [Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=/bin/sh -c "usbip attach -r 10.1.215.217 -b $(usbip list -r 10.1.215.217 | grep '16c0:05dc' | cut -d: -f1)"
-ExecStop=/bin/sh -c "usbip detach --port=$(usbip port | grep '<Port in Use>' | sed -E 's/^Port ([0-9][0-9]).*/\1/')"
+Type=simple
+ExecStart=/usr/local/sbin/usbip_service.py
 
 [Install]
 WantedBy=multi-user.target

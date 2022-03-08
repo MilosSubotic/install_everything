@@ -6,6 +6,8 @@ sudo ln -s /usr/lib/linux-tools/5.4.0-100-generic/usbip /usr/local/bin/usbip
 sudo modprobe vhci-hcd
 echo 'vhci-hcd' | sudo tee -a /etc/modules >> /dev/null
 
+sudo mkdir -p /usr/local/sbin/
+sudo cp usbip_service.py /usr/local/sbin/
 sudo cp usbip.service /lib/systemd/system/
 
 sudo systemctl --system daemon-reload
