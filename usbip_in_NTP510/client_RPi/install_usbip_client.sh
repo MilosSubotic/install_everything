@@ -2,7 +2,7 @@
 
 #https://derushadigital.com/other%20projects/2019/02/19/RPi-USBIP-ZWave.html
 
-sudo apt -y install usbip
+sudo apt -y install usbip python3-pyudev
 sudo modprobe usbip_host
 echo 'usbip_host' | sudo tee -a /etc/modules >> /dev/null
 

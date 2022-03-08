@@ -1,14 +1,25 @@
+#!/usr/bin/env python3
+
 
 devs_for_export = {
 	'16c0:05dc' : 'USBasp'
 }
 
+
+usbip_cmd = 'usbip'
+usbipd_cmd = 'usbipd'
+
 import pyudev
 import time
 import subprocess
+import functools
 
-usbip_cmd = 'usbip' # PC
-#usbip_cmd = '/usr/sbin/usbip' # RPi
+# Need bufferless stdout for deamon.
+print = functools.partial(print, flush = True)
+
+# Run deamon process.
+subprocess.run([usbipd_cmd, '-D'])
+
 
 active_devs_for_export = {}
 for d in devs_for_export.keys():
@@ -53,11 +64,10 @@ while True:
 		else:
 			if active_devs_for_export[d]:
 				active_devs_for_export[d] = False
-				print("Unbinding {} {}".format(d, devs_for_export[d]))
-				busid = active_devs_for_export_busid[d]
-				cmd = usbip_cmd + ' unbind --' + busid
-				r = subprocess.run(cmd.split())
+				#print("Unbinding {} {}".format(d, devs_for_export[d]))
+				#busid = active_devs_for_export_busid[d]
+				#cmd = usbip_cmd + ' unbind --' + busid
+				#r = subprocess.run(cmd.split())
 				
 	
-	break
 	time.sleep(1)
