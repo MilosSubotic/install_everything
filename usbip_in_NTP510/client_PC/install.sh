@@ -1,7 +1,8 @@
 #!/bin/bash
 
-sudo apt -y install linux-tools-generic
-sudo ln -s /usr/lib/linux-tools/5.4.0-100-generic/usbip /usr/local/bin/usbip
+V=`uname -r`
+sudo apt -y install linux-tools-$V
+sudo ln -sf /usr/lib/linux-tools/$V/usbip /usr/local/bin/usbip
 
 sudo modprobe vhci-hcd
 echo 'vhci-hcd' | sudo tee -a /etc/modules >> /dev/null
