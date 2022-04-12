@@ -1,0 +1,5 @@
+#!/bin/bash
+
+/usr/lib/linux-tools/`uname -r`/usbip "$@"
+
+exit $?

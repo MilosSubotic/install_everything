@@ -1,8 +1,7 @@
 #!/bin/bash
 
-V=`uname -r`
-sudo apt -y install linux-tools-$V
-sudo ln -sf /usr/lib/linux-tools/$V/usbip /usr/local/bin/usbip
+sudo apt -y install linux-tools-`uname -r`
+sudo cp usbip /usr/local/bin/usbip
 
 sudo modprobe vhci-hcd
 echo 'vhci-hcd' | sudo tee -a /etc/modules >> /dev/null
