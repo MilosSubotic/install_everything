@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 
 
-devs_to_import = {
-	'16c0:05dc' : 'USBasp'
-}
+prefix = '/usr/local'
+exports_file = prefix + '/share/usbip_services/settings.csv'
 
-SERVER_IP = '10.1.215.217'
 
 usbip_cmd = 'usbip'
 
+import csv
 import pyudev
 import time
 import subprocess
@@ -18,9 +17,23 @@ import re
 # Need bufferless stdout for deamon.
 print = functools.partial(print, flush = True)
 
+devs_to_import = {}
+SERVER_IP = None
 
 context = pyudev.Context()
 while True:
+	with open(exports_file, newline = '') as csv_file:
+		r = csv.reader(csv_file, delimiter='\t', quotechar='"')
+		for row in r:
+			t = row[0]
+			if t == 'SERVER_IP':
+				SERVER_IP = row[1]
+			elif t == 'export/import':
+				id = row[1]
+				name = row[2]
+				if id not in devs_to_import:
+					devs_to_import[id] = name
+	
 	active_devs = []
 	devices = context.list_devices(subsystem = 'usb') 
 	for dev in devices:

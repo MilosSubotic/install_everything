@@ -8,7 +8,10 @@ echo 'vhci-hcd' | sudo tee -a /etc/modules >> /dev/null
 
 sudo mkdir -p /usr/local/sbin/
 sudo cp usbip_service.py /usr/local/sbin/
+sudo mkdir -p /usr/local/share/usbip_services
+sudo cp ../common/settings.csv /usr/local/share/usbip_services
 sudo cp usbip.service /lib/systemd/system/
+
 
 sudo systemctl --system daemon-reload
 sudo systemctl enable usbip.service

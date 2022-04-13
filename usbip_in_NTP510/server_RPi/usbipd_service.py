@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 
 
-devs_for_export = {
-	'16c0:05dc' : 'USBasp'
-}
+prefix = '/usr/local'
+exports_file = prefix + '/share/usbip_services/settings.csv'
 
 
 usbip_cmd = 'usbip'
 usbipd_cmd = 'usbipd'
 
+import csv
 import pyudev
 import time
 import subprocess
@@ -20,14 +20,23 @@ print = functools.partial(print, flush = True)
 # Run deamon process.
 subprocess.run([usbipd_cmd, '-D'])
 
-
+devs_for_export = {}
 active_devs_for_export = {}
-for d in devs_for_export.keys():
-	active_devs_for_export[d] = False
 active_devs_for_export_busid = {}
 
 context = pyudev.Context()
 while True:
+	with open(exports_file, newline = '') as csv_file:
+		r = csv.reader(csv_file, delimiter='\t', quotechar='"')
+		for row in r:
+			t = row[0]
+			if t == 'export/import':
+				id = row[1]
+				name = row[2]
+				if id not in devs_for_export:
+					devs_for_export[id] = name
+					active_devs_for_export[id] = False
+	
 	active_devs = []
 	devices = context.list_devices(subsystem = 'usb') 
 	for dev in devices:

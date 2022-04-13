@@ -8,6 +8,8 @@ echo 'usbip_host' | sudo tee -a /etc/modules >> /dev/null
 
 sudo mkdir -p /usr/local/sbin/
 sudo cp usbipd_service.py /usr/local/sbin/
+sudo mkdir -p /usr/local/share/usbip_services
+sudo cp ../common/settings.csv /usr/local/share/usbip_services
 sudo cp usbipd.service /lib/systemd/system/
 
 # reload systemd, enable, then start the service
