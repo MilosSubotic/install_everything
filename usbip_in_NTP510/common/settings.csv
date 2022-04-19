@@ -1,3 +1,5 @@
 SERVER_IP	10.1.215.217
 export/import	16c0:05dc	USBasp
 export/import	0403:6010	MAX1000
+export/import	0483:374b	Nucleo Programmer
+export/import	0483:5740	Nucleo USB
