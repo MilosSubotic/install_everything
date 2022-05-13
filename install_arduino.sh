@@ -37,5 +37,9 @@ set_preference serial.port.file ttyUSB0
 set_preference serial.port.iserial null
 set_preference serial.debug_rate 115200
 
-# For WAVGAT check this:
-#https://github.com/paraplin/wavgat-board
+# Install Arduino Due
+arduino --install-boards arduino:sam
+
+# Install WAVGAT Uno.
+# URL: https://github.com/paraplin/wavgat-board
+arduino --pref "boardsmanager.additional.urls=https://raw.githubusercontent.com/paraplin/wavgat-board/master/package_paraplin_wavgat_index.json" --install-boards wavgat:avr
