@@ -12,10 +12,14 @@ alias gsta='git status'
 alias gcm='git commit -m'
 alias gcam='git commit -a -m'
 alias gad='git add'
+alias gdiff='git diff'
 function gl() {
 	git log -1 --skip=`expr $1 - 1`
 }
 function glsha() {
 	git log -1 --skip=`expr $1 - 1` --format="%H"
+}
+function gld() {
+	git diff `glsha $1` `glsha $2` $3
 }
 EOF
