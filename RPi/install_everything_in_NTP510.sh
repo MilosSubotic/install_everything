@@ -1,5 +1,7 @@
 #!/bin/bash
 
-sudo cp static_ip_settings /etc/network/interfaces.d
+D=`dirname "${BASH_SOURCE[0]}"`
+
+sudo cp $D/static_ip_settings /etc/network/interfaces.d
 sudo service networking restart
-bash install_everything_on_campus.sh
+bash $D/../campus/setup_proxy_basic.sh

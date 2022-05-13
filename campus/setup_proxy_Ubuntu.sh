@@ -1,5 +1,7 @@
 #!/bin/bash
 
+./setup_proxy_basic.sh
+
 URL="ftn.proxy"
 PORT="8080"
 
