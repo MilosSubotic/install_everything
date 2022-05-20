@@ -92,7 +92,7 @@ sudo apt update
 sudo apt -y install atom
 
 # Install settings.
-cp -rv ../.atom/ ~/
+cp -rv .atom/ ~/
 
 # Install packages.
 apm install language-matlab linter-matlab
@@ -102,15 +102,21 @@ apm install language-vhdl language-verilog language-tcl
 ###############################################################################
 # Julia.
 
-wget https://julialang-s3.julialang.org/bin/linux/x86/1.6/julia-1.6.0-linux-i686.tar.gz
+V1=1
+V2=7
+V3=2
+A=i686
+F=julia-$V1.$V2.$V3-linux-$A.tar.gz
+wget https://julialang-s3.julialang.org/bin/linux/x86/$V1.$V2/$F
 
-mkdir -p ~/.local/opt/julia
+mkdir -p ~/.local/opt/julia/$A
 
-tar xfv julia-1.6.0-linux-i686.tar.gz -C ~/.local/opt/julia
+tar xfv $F -C ~/.local/opt/julia/$A
 
+mkdir -p ~/.local/bin/
 pushd ~/.local/bin/
-ln -sf ../opt/julia/julia-1.6.0/bin/julia julia160
-ln -sf julia160 julia
+ln -sf ../opt/julia/$A/julia-$V1.$V2.$V3/bin/julia julia$V1$V2$V3
+ln -sf julia$V1$V2$V3 julia
 popd
 
 #F=~/.juliarc.jl
@@ -175,7 +181,7 @@ cp utils/* ~/.local/bin/
 ./install_waf_bash_completition.sh
 ./install_latex.sh
 ./install_kicad.sh
-#./install_arduino.sh
+./install_arduino.sh
 
 ###############################################################################
 
