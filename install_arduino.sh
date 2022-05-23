@@ -42,4 +42,6 @@ arduino --install-boards arduino:sam
 
 # Install WAVGAT Uno.
 # URL: https://github.com/paraplin/wavgat-board
-arduino --pref "boardsmanager.additional.urls=https://raw.githubusercontent.com/paraplin/wavgat-board/master/package_paraplin_wavgat_index.json" --install-boards wavgat:avr
+URL="https://raw.githubusercontent.com/paraplin/wavgat-board/master/package_paraplin_wavgat_index.json"
+set_preference boardsmanager.additional.urls "$URL"
+arduino --pref "boardsmanager.additional.urls=$URL" --install-boards wavgat:avr
