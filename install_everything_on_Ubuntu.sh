@@ -166,6 +166,18 @@ then
 fi
 
 ###############################################################################
+
+# Viber.
+wget https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
+sudo apt -y purge viber
+sudo apt -y install viber
+rm viber.deb
+setxkbmap -query
+setxkbmap -layout 'us,rs,gr,us' -variant ' ,latin, , '
+setxkbmap -query
+
+
+###############################################################################
 # Google Chrome.
 
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
