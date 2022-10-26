@@ -170,7 +170,7 @@ fi
 # Viber.
 wget https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
 sudo apt -y purge viber
-sudo apt -y install viber
+sudo dpkg -i viber.deb
 rm viber.deb
 setxkbmap -query
 setxkbmap -layout 'us,rs,gr,us' -variant ' ,latin, , '
