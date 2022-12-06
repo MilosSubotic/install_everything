@@ -45,3 +45,7 @@ arduino --install-boards arduino:sam
 URL="https://raw.githubusercontent.com/paraplin/wavgat-board/master/package_paraplin_wavgat_index.json"
 set_preference boardsmanager.additional.urls "$URL"
 arduino --pref "boardsmanager.additional.urls=$URL" --install-boards wavgat:avr
+
+wget https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh
+BINDIR=~/.local/bin bash install.sh
+rm install.sh
