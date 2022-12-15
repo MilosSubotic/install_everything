@@ -63,16 +63,14 @@ sudo apt -y install git
 ###############################################################################
 # Worker.
 
+pushd worker/
 if (( $MAJOR >= 20 ))
 then
-	pushd worker_install/
 	./install_worker.sh
-	popd
 else
-	pushd worker_install/
 	./build_and_install_worker.sh
-	popd
 fi
+popd
 
 ###############################################################################
 # Atom.
@@ -192,8 +190,13 @@ cp utils/* ~/.local/bin/
 
 ./install_waf_bash_completition.sh
 ./install_latex.sh
-./install_kicad.sh
 ./install_arduino.sh
+
+###############################################################################
+
+pushd kicad
+./install_kicad.sh
+popd
 
 ###############################################################################
 

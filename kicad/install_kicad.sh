@@ -20,7 +20,10 @@ if (( $MAJOR < 16 ))
 then
 	sudo -E add-apt-repository --yes ppa:js-reynaud/kicad-5
 else
-	sudo -E add-apt-repository --yes ppa:kicad/kicad-5.1-releases
+	#sudo -E add-apt-repository --yes ppa:kicad/kicad-5.1-releases
+	sudo -E add-apt-repository --yes ppa:kicad/kicad-6.0-releases
+	# Copy config.
+	cp -rfv .config ~/
 fi
 sudo apt update
 sudo apt install -y kicad
