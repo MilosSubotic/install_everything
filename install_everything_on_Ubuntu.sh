@@ -142,7 +142,7 @@ apm install language-julia
 ###############################################################################
 # Beyond Compare.
 
-wget https://www.scootersoftware.com/bcompare-4.3.7.25118_amd64.deb
+wget https://www.scootersoftware.com/bcompare-4.4.5.27371_amd64.deb
 sudo dpkg -i bcompare-*.deb
 
 ###############################################################################
