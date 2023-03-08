@@ -218,9 +218,9 @@ paths {
 	}
 	path {
 		position = 3;
-		title = "/media/micuri/MICURI";
+		title = "/media/$USER/MICURI";
 		color = 1,0;
-		path = "/media/micuri/MICURI";
+		path = "/media/$USER/MICURI";
 		shortkeys {
 			normal {
 				key = "4";
@@ -229,9 +229,9 @@ paths {
 	}
 	path {
 		position = 4;
-		title = "/media/micuri";
+		title = "/media/$USER";
 		color = 1,0;
-		path = "/media/micuri";
+		path = "/media/$USER";
 		shortkeys {
 			normal {
 				key = "5";
