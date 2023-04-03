@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VER=1.8.13
+VER=1.8.19
 wget https://downloads.arduino.cc/arduino-$VER-linux64.tar.xz
 mkdir -p ~/.local/opt/arduino/
 tar xfv *.tar.xz -C ~/.local/opt/arduino
@@ -16,17 +16,17 @@ sleep 5
 pkill -P $ARDUINO_PID
 
 function set_preference() {
-	SETTING_NAME="$1"
-	SET_TO_VALUE="$2"
-	F="$HOME/.arduino15/preferences.txt"
-	SETTING_NAME="${SETTING_NAME//./\.}"
-	SET_TO_VALUE="${SET_TO_VALUE////\\/}"
-	if grep -q "$SETTING_NAME=" "$F"
-	then 
-		sed -i "s/^$SETTING_NAME=.*/$SETTING_NAME=$SET_TO_VALUE/g" "$F"
-	else
-		echo "$SETTING_NAME=$SET_TO_VALUE" >> "$F"
-	fi
+    SETTING_NAME="$1"
+    SET_TO_VALUE="$2"
+    F="$HOME/.arduino15/preferences.txt"
+    SETTING_NAME="${SETTING_NAME//./\.}"
+    SET_TO_VALUE="${SET_TO_VALUE////\\/}"
+    if grep -q "$SETTING_NAME=" "$F"
+    then
+        sed -i "s/^$SETTING_NAME=.*/$SETTING_NAME=$SET_TO_VALUE/g" "$F"
+    else
+        echo "$SETTING_NAME=$SET_TO_VALUE" >> "$F"
+    fi
 }
 
 set_preference editor.tabs.expand false
@@ -46,6 +46,7 @@ URL="https://raw.githubusercontent.com/paraplin/wavgat-board/master/package_para
 set_preference boardsmanager.additional.urls "$URL"
 arduino --pref "boardsmanager.additional.urls=$URL" --install-boards wavgat:avr
 
+mkdir -p ~/.local/bin
 wget https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh
 BINDIR=~/.local/bin bash install.sh
 rm install.sh
