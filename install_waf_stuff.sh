@@ -17,6 +17,8 @@ MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
 
 if (( $MAJOR >= 20 ))
 then
+	sudo apt -y install python-is-python3
+else
 	sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 3
 fi
 

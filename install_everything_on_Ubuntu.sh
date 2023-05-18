@@ -44,21 +44,17 @@ sudo apt -y install libc6:i386 libncurses5:i386 libstdc++6:i386
 
 sudo apt -y install git build-essential
 
-# Hack because newer Ubuntu does not have python2.
-if (( $MAJOR >= 20 ))
-then
-	#ln -s `which python3` ~/.local/bin/python
-	sudo apt -y install python-is-python3
-fi
-
 mkdir -p ~/.local/bin/
 mkdir -p ~/.local/opt/
 
 ###############################################################################
+
+./install_waf_stuff.sh
+
+###############################################################################
 # Git.
 
-sudo apt -y install git
-./setup_git_stuff.sh
+./install_git_stuff.sh
 
 ###############################################################################
 # Worker.
@@ -188,7 +184,6 @@ cp utils/* ~/.local/bin/
 
 ###############################################################################
 
-./install_waf_bash_completition.sh
 ./install_latex.sh
 ./install_arduino.sh
 
