@@ -142,6 +142,12 @@ wget https://www.scootersoftware.com/bcompare-4.4.5.27371_amd64.deb
 sudo dpkg -i bcompare-*.deb
 
 ###############################################################################
+# Google Chrome.
+
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+
+###############################################################################
 # Discord.
 
 V=0.0.14
@@ -170,12 +176,11 @@ setxkbmap -query
 setxkbmap -layout 'us,rs,gr,us' -variant ' ,latin, , '
 setxkbmap -query
 
-
 ###############################################################################
-# Google Chrome.
+# WhatsApp
 
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
+sudo apt install snapd
+sudo snap install whatsapp-for-linux
 
 ###############################################################################
 # Install utils.
