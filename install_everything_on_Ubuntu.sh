@@ -69,36 +69,34 @@ fi
 popd
 
 ###############################################################################
-# Atom.
-
-#wget https://atom.io/download/deb -O atom-amd64.deb
-#sudo dpkg -i atom-amd64.deb
-
-#curl -sL https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-#sudo sh -c 'echo "deb [arch=amd64]
+## Atom.
+#
+#wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
 #sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
 #sudo apt update
-#sudo apt install atom
+#sudo apt -y install atom
+#
+## Install settings.
+#cp -rv .atom/ ~/
+#
+## Install packages.
+#apm install language-matlab linter-matlab
+#apm install language-markdown
+#apm install language-vhdl language-verilog language-tcl
+#
+###############################################################################
+# VSC
 
-wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-sudo apt update
-sudo apt -y install atom
-
-# Install settings.
-cp -rv .atom/ ~/
-
-# Install packages.
-apm install language-matlab linter-matlab
-apm install language-markdown
-apm install language-vhdl language-verilog language-tcl
+wget --content-disposition https://go.microsoft.com/fwlink/?LinkID=760868
+sudo dpkg -i code*.deb
+rm code*.deb
 
 ###############################################################################
 # Julia.
 
 V1=1
-V2=7
-V3=2
+V2=9
+V3=3
 A=i686
 F=julia-$V1.$V2.$V3-linux-$A.tar.gz
 wget https://julialang-s3.julialang.org/bin/linux/x86/$V1.$V2/$F
@@ -109,19 +107,9 @@ tar xfv $F -C ~/.local/opt/julia/$A
 
 mkdir -p ~/.local/bin/
 pushd ~/.local/bin/
-ln -sf ../opt/julia/$A/julia-$V1.$V2.$V3/bin/julia julia$V1$V2$V3
-ln -sf julia$V1$V2$V3 julia
+ln -sf ../opt/julia/$A/julia-$V1.$V2.$V3/bin/julia julia$V1$V2$V3$A
+ln -sf julia$V1$V2$V3$A julia
 popd
-
-#F=~/.juliarc.jl
-#mkdir -p $(dirname $F)
-#if test -f $F
-#then
-#	cp $F $F.backup-$(date +%F-%T | sed 's/:/-/g')
-#fi
-#cat > $F << EOF
-#push!(LOAD_PATH, ".")
-#EOF
 
 F=~/.julia/config/startup.jl
 mkdir -p $(dirname $F)
@@ -133,7 +121,7 @@ cat > $F << EOF
 push!(LOAD_PATH, ".")
 EOF
 
-apm install language-julia
+#apm install language-julia
 
 ###############################################################################
 # Beyond Compare.
@@ -172,9 +160,6 @@ wget https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
 sudo apt -y purge viber
 sudo dpkg -i viber.deb
 rm viber.deb
-setxkbmap -query
-setxkbmap -layout 'us,rs,gr,us' -variant ' ,latin, , '
-setxkbmap -query
 
 ###############################################################################
 # WhatsApp
