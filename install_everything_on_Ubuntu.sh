@@ -154,6 +154,7 @@ then
 fi
 
 ###############################################################################
+# Comms.
 
 # Viber.
 wget https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
@@ -161,9 +162,10 @@ sudo apt -y purge viber
 sudo dpkg -i viber.deb
 rm viber.deb
 
-###############################################################################
-# WhatsApp
+# Telegram.
+sudo apt -y install telegram-desktop
 
+# WhatsApp.
 sudo apt install snapd
 sudo snap install whatsapp-for-linux
 
