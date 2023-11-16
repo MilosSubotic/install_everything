@@ -98,32 +98,7 @@ rm code*.deb
 ###############################################################################
 # Julia.
 
-V1=1
-V2=9
-V3=3
-A=i686
-F=julia-$V1.$V2.$V3-linux-$A.tar.gz
-wget https://julialang-s3.julialang.org/bin/linux/x86/$V1.$V2/$F
-
-mkdir -p ~/.local/opt/julia/$A
-
-tar xfv $F -C ~/.local/opt/julia/$A
-
-mkdir -p ~/.local/bin/
-pushd ~/.local/bin/
-ln -sf ../opt/julia/$A/julia-$V1.$V2.$V3/bin/julia julia$V1$V2$V3$A
-ln -sf julia$V1$V2$V3$A julia
-popd
-
-F=~/.julia/config/startup.jl
-mkdir -p $(dirname $F)
-if test -f $F
-then
-	cp $F $F.backup-$(date +%F-%T | sed 's/:/-/g')
-fi
-cat > $F << EOF
-push!(LOAD_PATH, ".")
-EOF
+./install_julia.sh
 
 #apm install language-julia
 
