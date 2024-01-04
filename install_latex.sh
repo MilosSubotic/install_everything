@@ -6,6 +6,7 @@ sudo apt -y install hunspell-en-us hunspell-sr
 # Texmaker -> Options -> Configure Texmaker -> Editor -> Spelling dictionary
 # Select some *.dic file from: /usr/share/hunspell/
 
-apm install latex language-latex
+code --install-extension James-Yu.latex-workshop
 
-patch -d$HOME/.atom/packages/latex/lib/openers/ -p1 < latex_evince.patch
+#apm install latex language-latex
+#patch -d$HOME/.atom/packages/latex/lib/openers/ -p1 < latex_evince.patch
