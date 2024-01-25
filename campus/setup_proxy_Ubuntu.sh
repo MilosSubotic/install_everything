@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Warm up sudo.
-sudo ls
+sudo -v
 
-./setup_proxy_basic.sh
+D=`dirname "${BASH_SOURCE[0]}"`
+$D/setup_proxy_basic.sh
 
 URL="ftn.proxy"
 PORT="8080"

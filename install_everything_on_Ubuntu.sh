@@ -1,8 +1,8 @@
 #!/bin/bash
 ###############################################################################
-# Just to obtain sudo rights.
 
-sudo ls
+# Warm up sudo.
+sudo -v
 
 ###############################################################################
 # Check is this Ubuntu.
@@ -115,54 +115,23 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 ###############################################################################
-# Discord.
-
-V=0.0.14
-wget https://dl.discordapp.net/apps/linux/$V/discord-$V.deb
-sudo dpkg -i discord-0.0.14.deb
-sudo apt -y --fix-broken install
-if [[ "$http_proxy" != "" ]];
-then
-	ADD='--proxy-server="proxy.uns.ac.rs:8080"'
-	WHAT="Exec=/usr/share/discord/Discord"
-	WHAT="${WHAT////\\/}"
-	F="/usr/share/discord/discord.desktop"
-	sudo sed -i "s/^$WHAT/$WHAT $ADD/g" "$F"
-	sudo xdg-desktop-menu install --manual "$F"
-	sudo xdg-desktop-icon install --manual "$F"
-fi
-
-###############################################################################
-# Comms.
-
-# Viber.
-wget https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
-sudo apt -y purge viber
-sudo dpkg -i viber.deb
-rm viber.deb
-
-# Telegram.
-sudo apt -y install telegram-desktop
-
-# WhatsApp.
-sudo apt install snapd
-sudo snap install whatsapp-for-linux
-
-###############################################################################
 # Install utils.
 
 cp utils/* ~/.local/bin/
 
 ###############################################################################
 
-./install_latex.sh
-./install_arduino.sh
+sudo apt -y install tmux
 
 ###############################################################################
+
+./install_latex.sh
+./install_arduino.sh
 
 pushd kicad
 ./install_kicad.sh
 popd
+install_freecad.sh
 
 ###############################################################################
 
