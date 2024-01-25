@@ -48,12 +48,15 @@ end
 
 install_if_not_installed(
 	[
-		"ArgParse",
+		"ArgParse", "Reexport",
 		"Plots", "PyPlot", "Plotly",
 		"CSV", "DataFrames",
 		"DSP", "FFTW",
 		"Distributions", "StatsBase", "StatsPlots",
 		"LsqFit",
-		"NPZ"
+		"NPZ",
+		"CxxWrap",
+		"StaticArrays",
+		"CoordinateTransformations", "Rotations",
 	]
 )
