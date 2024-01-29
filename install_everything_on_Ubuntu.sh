@@ -121,7 +121,7 @@ cp utils/* ~/.local/bin/
 
 ###############################################################################
 
-sudo apt -y install tmux
+sudo apt -y install tmux xsel
 sudo apt -y install libsfml-dev
 
 ###############################################################################
