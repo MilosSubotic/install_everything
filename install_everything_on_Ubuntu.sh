@@ -120,19 +120,25 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 cp utils/* ~/.local/bin/
 
 ###############################################################################
+# Programmers stuff.
 
+sudo apt -y install g++ cmake pkg-config
 sudo apt -y install tmux xsel
 sudo apt -y install libsfml-dev
 
 ###############################################################################
 
-./install_latex.sh
+./install_qt.sh
 ./install_arduino.sh
+./install_ros.sh
 
 pushd kicad
 ./install_kicad.sh
 popd
-install_freecad.sh
+
+./install_latex.sh
+
+./install_freecad.sh
 
 ###############################################################################
 
