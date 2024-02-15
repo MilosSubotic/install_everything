@@ -13,6 +13,8 @@ fi
 R=`lsb_release --release`
 MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
 
+D="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
 ###############################################################################
 # KiCAD.
 
@@ -23,7 +25,7 @@ else
 	#sudo -E add-apt-repository --yes ppa:kicad/kicad-5.1-releases
 	sudo -E add-apt-repository --yes ppa:kicad/kicad-6.0-releases
 	# Copy config.
-	cp -rfv .config ~/
+	cp -rfv $D/.config ~/
 fi
 sudo apt update
 sudo apt install -y kicad
