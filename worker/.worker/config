@@ -1049,7 +1049,7 @@ buttons {
 				separateeachentry = false;
 				recursive = false;
 				start = normal;
-				com = "atom {A}";
+				com = "{scripts}/xeditor {A}";
 				viewstr = "";
 				inbackground = true;
 				takedirs = false;
