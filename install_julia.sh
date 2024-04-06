@@ -19,7 +19,7 @@ tar xfv $F -C ~/.local/opt/julia/$A
 
 mkdir -p ~/.local/bin/
 pushd ~/.local/bin/
-J=julia_${A}_$V1$V2$V3
+J=julia-${A}-$V1.$V2.$V3
 ln -sf ../opt/julia/$A/julia-$V1.$V2.$V3/bin/julia $J
 ln -sf $J julia
 popd
