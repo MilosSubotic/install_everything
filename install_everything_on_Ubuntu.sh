@@ -115,11 +115,6 @@ wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 sudo dpkg -i google-chrome-stable_current_amd64.deb
 
 ###############################################################################
-# Install utils.
-
-cp utils/* ~/.local/bin/
-
-###############################################################################
 # Programmers stuff.
 
 sudo apt -y install g++ cmake pkg-config
