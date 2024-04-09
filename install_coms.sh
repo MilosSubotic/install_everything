@@ -7,9 +7,9 @@ pushd tmp/
 ###############################################################################
 # Discord.
 
-V=0.0.14
+V=0.0.48
 wget https://dl.discordapp.net/apps/linux/$V/discord-$V.deb
-sudo dpkg -i discord-0.0.14.deb
+sudo dpkg -i discord-$V.deb
 sudo apt -y --fix-broken install
 if [[ "$http_proxy" != "" ]];
 then
