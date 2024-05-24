@@ -127,13 +127,18 @@ sudo apt -y install libsfml-dev
 ./install_arduino.sh
 ./install_ros.sh
 
-pushd kicad
+pushd kicad/
 ./install_kicad.sh
 popd
 
 ./install_latex.sh
 
 ./install_freecad.sh
+
+pushd Quartus/
+./install.sh
+popd
+
 
 ###############################################################################
 
