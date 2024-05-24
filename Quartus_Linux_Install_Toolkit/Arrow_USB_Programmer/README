@@ -1,0 +1,61 @@
+Arrow USB Blaster Programmer Hardware Library for Linux, 64 bit
+Version 2.1
+
+This is the readme file for the 64-bit Linux programmer hardware library
+for BeMicro boards and other Arrow USB Blaster compatible hardware.
+
+Installation
+Copy the file libjtag_hw_arrow.so into the directory quartus/linux64 of
+the Intel PSG installation directory (e.g. /opt/intelFPGA/17.1/quartus/linux64).
+Be sure to have the permission for doing this.
+
+Depending on your settings, it might be necessary to add a rule under
+/etc/udev/rules.d. An example how to do this can be found in the file
+51-usbblaster.rules in this directory.
+
+The frequency of the JTAG clock TCK can be configured using an additional
+configuration file. The file is searched by the shared library in two locations: 
+- as ".arrow_usb_blaster.conf" in the home directory of the user who has 
+  started the JTAG demon. This possibility is intended to set the frequency
+  for an individual user or project.
+- as "arrow_usb_blaster.conf" under "/etc" if it was not found in the home
+  directory. This is to change the settings globally.
+If no configuration file is found the default setting is used which is 6MHz.
+
+If there is the need to change the JTAG clock frequency, copy the file
+"arrow_usb_blaster.conf" and adjust the frequency to your needs.
+
+The Arrow USB Blaster driver uses the FTDI library libftd2xx version
+1.3.6 which is statically linked.
+
+The Arrow USB Blaster driver for Linux has been compiled and tested under
+CentOS 6.8 (64 bit). However it should also work with other Linux systems.
+
+-----
+Known issues:
+
+(1) FTDI offers two different drivers for the FT2232H device, VCP and D2XX.
+The application note AN343 issued by FTDI states that only one of these
+two drivers can be resident on Linux. The Arrow USB Blaster needs the
+D2XX driver in order to operate properly. However, on most Linux systems
+the VCP driver is loaded automatically.
+
+Because of that, the VCP driver must be unloaded before the Arrow USB Blaster
+library can be used. A common way to do this is to open a shell window,
+make sure you are a sudoer, and enter:
+
+sudo rmmod ftdi_sio
+sudo rmmod usbserial
+
+This unloads the VCP driver. There is no need to install the D2XX driver since
+this driver is statically linked to the Arrow USB Blaster library.
+
+If you want, you also can disable by the VCP driver by blacklisting it or
+by simply deleting it. This eliminates the need to unload the VCP driver
+each time a board equipped with an Arrow USB Blaster is connected to the PC.
+You may also make use of an udev script that unloads the VCP driver automatically
+when the Arrow USB Blaster is plugged-in.
+
+(2) During the enumeration process, the FTDI USB controller performs a reset.
+Depending on the hardware used, this might remove the power from the FPGA and
+therefore erase the contents of the FPGA. 

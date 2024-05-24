@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "MAX1000: Running serial..."
+echo "Exit with Cltr+A Cltr+X"
+picocom -b 115200 /dev/ttyUSB1 -l | tee /tmp/serial.log
