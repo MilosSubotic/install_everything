@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# To enable Arduino to work.
+sudo usermod -a -G dialout $USER
+# Need log out and log in to work.
+# If need immidiately to use it, then do:
+#   su $USER
+#
+
 VER=1.8.19
 wget https://downloads.arduino.cc/arduino-$VER-linux64.tar.xz
 mkdir -p ~/.local/opt/arduino/

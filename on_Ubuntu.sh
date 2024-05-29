@@ -19,12 +19,6 @@ R=`lsb_release --release`
 MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
 
 ###############################################################################
-# Doing all package downloading and unpacking in tmp dir.
-
-mkdir tmp/
-pushd tmp/
-
-###############################################################################
 # Global stuff.
 
 # For larger fonts.
@@ -48,17 +42,9 @@ mkdir -p ~/.local/bin/
 mkdir -p ~/.local/opt/
 
 ###############################################################################
+# Julia.
 
-sudo usermod -a -G dialout $USER
-
-###############################################################################
-
-./install_waf_stuff.sh
-
-###############################################################################
-# Git.
-
-./install_git_stuff.sh
+./install_julia.sh
 
 ###############################################################################
 # Worker.
@@ -73,22 +59,6 @@ fi
 popd
 
 ###############################################################################
-## Atom.
-#
-#wget -qO - https://packagecloud.io/AtomEditor/atom/gpgkey | sudo apt-key add -
-#sudo sh -c 'echo "deb [arch=amd64] https://packagecloud.io/AtomEditor/atom/any/ any main" > /etc/apt/sources.list.d/atom.list'
-#sudo apt update
-#sudo apt -y install atom
-#
-## Install settings.
-#cp -rv .atom/ ~/
-#
-## Install packages.
-#apm install language-matlab linter-matlab
-#apm install language-markdown
-#apm install language-vhdl language-verilog language-tcl
-#
-###############################################################################
 # VSC
 
 wget --content-disposition https://go.microsoft.com/fwlink/?LinkID=760868
@@ -96,23 +66,18 @@ sudo dpkg -i code*.deb
 rm code*.deb
 
 ###############################################################################
-# Julia.
+# Google Chrome.
 
-./install_julia.sh
-
-#apm install language-julia
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i google-chrome-stable_current_amd64.deb
+rm google-chrome-stable_current_amd64.deb
 
 ###############################################################################
 # Beyond Compare.
 
 wget https://www.scootersoftware.com/bcompare-4.4.5.27371_amd64.deb
 sudo dpkg -i bcompare-*.deb
-
-###############################################################################
-# Google Chrome.
-
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
+rm bcompare-*.deb
 
 ###############################################################################
 # Programmers stuff.
@@ -123,27 +88,27 @@ sudo apt -y install libsfml-dev
 
 ###############################################################################
 
-./install_qt.sh
+./install_git_stuff.sh
+
+./install_waf_stuff.sh
+
 ./install_arduino.sh
-./install_ros.sh
 
 pushd kicad/
 ./install_kicad.sh
 popd
 
+./install_qt.sh
+#./install_ros.sh
+
 ./install_latex.sh
 
-./install_freecad.sh
+#FIXME kicad and freecad libocct are in fight.
+#./install_freecad.sh
 
 pushd Quartus/
 ./install.sh
 popd
-
-
-###############################################################################
-
-popd
-rm -rf tmp/
 
 ###############################################################################
 

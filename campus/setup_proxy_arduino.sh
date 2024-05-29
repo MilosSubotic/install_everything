@@ -20,7 +20,10 @@ set_preference proxy.manual.port 8080
 set_preference proxy.manual.type HTTP
 set_preference network.proxy "http://ftn.proxy:8080/"
 
-arduino-cli config init
+arduino-cli config init &
+ARDUINO_CLI_PID=$!
+sleep 1
+pkill -P $ARDUINO_CLI_PID
 cat >> $HOME/.arduino15/arduino-cli.yaml << EOF
 network:
   proxy: http://ftn.proxy:8080/
