@@ -1,4 +1,4 @@
-workerconfig 4.0.1;
+workerconfig 4.4.0;
 global {
 	lang = "builtin";
 	rows = 3;
@@ -101,21 +101,6 @@ global {
 	useversionstringcompare = true;
 }
 colors {
-	statebar = 2,3;
-	sellvbar = 2,4;
-	unsellvbar = 1,0;
-	seldir = 1,3;
-	unseldir = 10,1;
-	selfile = 1,2;
-	unselfile = 2,1;
-	clockbar = 2,1;
-	selactdir = 1,7;
-	unselactdir = 10,7;
-	selactfile = 1,7;
-	unselactfile = 2,7;
-	requester = 2,1;
-	lvheader = 1,0;
-	lvbg = 1;
 	labelcolors {
 		color {
 			name = "1";
@@ -139,6 +124,82 @@ colors {
 		}
 	}
 	faces {
+		face {
+			name = "clockbar-bg";
+			color = 1;
+		}
+		face {
+			name = "dirview-bg";
+			color = 1;
+		}
+		face {
+			name = "dirview-dir-active-bg";
+			color = 7;
+		}
+		face {
+			name = "dirview-dir-active-fg";
+			color = 10;
+		}
+		face {
+			name = "dirview-dir-normal-bg";
+			color = 1;
+		}
+		face {
+			name = "dirview-dir-normal-fg";
+			color = 10;
+		}
+		face {
+			name = "dirview-dir-selact-bg";
+			color = 7;
+		}
+		face {
+			name = "dirview-dir-selact-fg";
+			color = 1;
+		}
+		face {
+			name = "dirview-dir-select-fg";
+			color = 1;
+		}
+		face {
+			name = "dirview-file-active-bg";
+			color = 7;
+		}
+		face {
+			name = "dirview-file-active-fg";
+			color = 2;
+		}
+		face {
+			name = "dirview-file-normal-bg";
+			color = 1;
+		}
+		face {
+			name = "dirview-file-normal-fg";
+			color = 2;
+		}
+		face {
+			name = "dirview-file-selact-bg";
+			color = 7;
+		}
+		face {
+			name = "dirview-file-selact-fg";
+			color = 1;
+		}
+		face {
+			name = "dirview-file-select-bg";
+			color = 2;
+		}
+		face {
+			name = "dirview-file-select-fg";
+			color = 1;
+		}
+		face {
+			name = "request-bg";
+			color = 1;
+		}
+		face {
+			name = "request-fg";
+			color = 2;
+		}
 		face {
 			name = "textview-bg";
 			color = 2;
@@ -7415,6 +7476,29 @@ buttons {
 		commands {
 			ExternalVDirOp {
 				commandstring = "{scripts}/git_untracked_files.sh";
+			}
+		}
+	}
+	button {
+		position = 630;
+		title = "git changed files";
+		color = 1,0;
+		shortkeys {
+		}
+		commands {
+			ExternalVDirOp {
+				commandstring = "{scripts}/git_changed_files.sh {Rs{Files from number of past commits}{1}}";
+			}
+		}
+	}
+	button {
+		position = 632;
+		title = "Help";
+		color = 1,0;
+		shortkeys {
+		}
+		commands {
+			HelpOp {
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-workerconfig 3.15.2;
+workerconfig 4.0.1;
 global {
 	lang = "builtin";
 	rows = 3;
@@ -38,7 +38,7 @@ global {
 			}
 		}
 	}
-	terminal = "xterm -e %s";
+	terminal = "gnome-terminal -e %s";
 	ownerstyle = style1;
 	usestringfordirsize = false;
 	timesets {
@@ -218,9 +218,9 @@ paths {
 	}
 	path {
 		position = 3;
-		title = "/media/micuri/MICURI";
+		title = "/media/$USER/MICURI";
 		color = 1,0;
-		path = "/media/micuri/MICURI";
+		path = "/media/$USER/MICURI";
 		shortkeys {
 			normal {
 				key = "4";
@@ -229,9 +229,9 @@ paths {
 	}
 	path {
 		position = 4;
-		title = "/media/micuri";
+		title = "/media/$USER";
 		color = 1,0;
-		path = "/media/micuri";
+		path = "/media/$USER";
 		shortkeys {
 			normal {
 				key = "5";
@@ -259,7 +259,19 @@ hotkeys {
 			}
 		}
 		commands {
-			ParentDirOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "parentdir";
 			}
 		}
 	}
@@ -285,7 +297,19 @@ hotkeys {
 			}
 		}
 		commands {
-			RowUp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "up";
 			}
 		}
 	}
@@ -297,7 +321,19 @@ hotkeys {
 			}
 		}
 		commands {
-			RowDown {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "down";
 			}
 		}
 	}
@@ -309,7 +345,19 @@ hotkeys {
 			}
 		}
 		commands {
-			FirstRow {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "first";
 			}
 		}
 	}
@@ -321,7 +369,19 @@ hotkeys {
 			}
 		}
 		commands {
-			LastRow {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "last";
 			}
 		}
 	}
@@ -333,7 +393,19 @@ hotkeys {
 			}
 		}
 		commands {
-			PageUp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "pageup";
 			}
 		}
 	}
@@ -345,7 +417,19 @@ hotkeys {
 			}
 		}
 		commands {
-			PageDown {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "pagedown";
 			}
 		}
 	}
@@ -357,7 +441,19 @@ hotkeys {
 			}
 		}
 		commands {
-			SelectOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "selectentry";
 			}
 		}
 	}
@@ -369,7 +465,19 @@ hotkeys {
 			}
 		}
 		commands {
-			SimDDOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "simulate_doubleclick";
 			}
 		}
 	}
@@ -941,7 +1049,7 @@ buttons {
 				separateeachentry = false;
 				recursive = false;
 				start = normal;
-				com = "atom {A}";
+				com = "{scripts}/xeditor {A}";
 				viewstr = "";
 				inbackground = true;
 				takedirs = false;
@@ -1292,7 +1400,19 @@ buttons {
 			}
 		}
 		commands {
-			SelectAllOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "selectall";
 			}
 		}
 	}
@@ -1306,7 +1426,19 @@ buttons {
 			}
 		}
 		commands {
-			SelectNoneOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "selectnone";
 			}
 		}
 	}
@@ -1759,7 +1891,19 @@ buttons {
 			}
 		}
 		commands {
-			InvertAllOp {
+			ScriptOp {
+				type = evalcommand;
+				pushuseoutput = false;
+				dodebug = false;
+				wpurecursive = false;
+				wputakedirs = false;
+				stacknr = 0;
+				wintype = leave;
+				changeprogress = false;
+				changetext = false;
+				progressuseoutput = false;
+				wintextuseoutput = false;
+				commandstring = "invertall";
 			}
 		}
 	}
@@ -2069,6 +2213,38 @@ buttons {
 				com = "backup -zv {a}";
 				viewstr = "";
 				inbackground = false;
+				takedirs = false;
+				dontcd = false;
+			}
+			ReloadOp {
+				mode = current;
+				resetdirsizes = true;
+				keepfiletypes = true;
+			}
+		}
+	}
+	button {
+		position = 55;
+		title = "Move to backup dir";
+		color = 1,0;
+		shortkeys {
+			normal {
+				key = "v";
+				mod = control;
+			}
+			normal {
+				key = "m";
+				mod = control;
+			}
+		}
+		commands {
+			OwnOp {
+				separateeachentry = false;
+				recursive = false;
+				start = normal;
+				com = "mv {a}  backup/";
+				viewstr = "";
+				inbackground = true;
 				takedirs = false;
 				dontcd = false;
 			}
@@ -2807,6 +2983,30 @@ buttons {
 				inbackground = false;
 				takedirs = false;
 				dontcd = false;
+			}
+		}
+	}
+	button {
+		position = 87;
+		title = "gedit";
+		color = 1,0;
+		shortkeys {
+			normal {
+				key = "F4";
+				mod = shift;
+			}
+		}
+		commands {
+			OwnOp {
+				separateeachentry = false;
+				recursive = false;
+				start = normal;
+				com = "gedit {A}";
+				viewstr = "";
+				inbackground = true;
+				takedirs = false;
+				dontcd = false;
+				usevirtualtempcopies = false;
 			}
 		}
 	}
@@ -7203,6 +7403,18 @@ buttons {
 		commands {
 			ExternalVDirOp {
 				commandstring = "{scripts}/find_file_by_chksum.py -s {Rs{Checksum value to compare with:}{}} -l {Rs{File size limit (0 means no limit):}{0}} .";
+			}
+		}
+	}
+	button {
+		position = 588;
+		title = "git untracked as vdir";
+		color = 1,0;
+		shortkeys {
+		}
+		commands {
+			ExternalVDirOp {
+				commandstring = "{scripts}/git_untracked_files.sh";
 			}
 		}
 	}
