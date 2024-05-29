@@ -15,12 +15,20 @@ MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
 
 ###############################################################################
 
-if (( $MAJOR < 22 ))
-then
-	sudo apt -y install python-is-python3
-elif (( $MAJOR < 20 ))
+#TODO Check again on freshly Ubuntu 22
+#if (( $MAJOR < 22 ))
+#then
+#	sudo apt -y install python-is-python3
+#elif (( $MAJOR < 20 ))
+#then
+#	sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 3
+#fi
+
+if (( $MAJOR < 20 ))
 then
 	sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 3
+else
+	sudo apt -y install python-is-python3
 fi
 
 ./install_waf_bash_completition.sh
