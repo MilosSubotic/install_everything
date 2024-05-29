@@ -11,7 +11,7 @@ sudo apt -y install libapr1 libaprutil1 \
     libxcb-composite0 libxcb-cursor0 libxcb-damage0
 
 sudo apt -y install mesa-utils
-glxgears
+#glxgears
 # Need at least OpenGL v4.5
 glxinfo | grep "OpenGL version"
 

@@ -79,3 +79,4 @@ cd ..
 
 
 popd tmp/
+rm -rf tmp/
