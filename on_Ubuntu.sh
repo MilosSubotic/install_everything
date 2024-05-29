@@ -75,9 +75,12 @@ rm google-chrome-stable_current_amd64.deb
 ###############################################################################
 # Beyond Compare.
 
-wget https://www.scootersoftware.com/bcompare-4.4.5.27371_amd64.deb
-sudo dpkg -i bcompare-*.deb
-rm bcompare-*.deb
+wget https://www.scootersoftware.com/DEB-GPG-KEY-scootersoftware.asc
+sudo mv DEB-GPG-KEY-scootersoftware.asc /etc/apt/trusted.gpg.d/
+wget https://www.scootersoftware.com/scootersoftware.list
+sudo mv scootersoftware.list /etc/apt/sources.list.d/
+sudo apt update
+sudo apt -y install bcompare
 
 ###############################################################################
 # Programmers stuff.
