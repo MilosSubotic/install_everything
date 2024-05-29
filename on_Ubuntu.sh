@@ -10,9 +10,9 @@ sudo -v
 DIST=`lsb_release --id | sed 's/^Distributor ID:[\t ]*\(.*\)$/\1/'`
 if [[ "$DIST" != "Ubuntu" ]]
 then
-	echo "This install script is made for Ubuntu GNU/Linux distribution!"
-	echo "You need to change it a little for your distribution!"
-	exit 1
+    echo "This install script is made for Ubuntu GNU/Linux distribution!"
+    echo "You need to change it a little for your distribution!"
+    exit 1
 fi
 
 R=`lsb_release --release`
@@ -52,9 +52,9 @@ mkdir -p ~/.local/opt/
 pushd worker/
 if (( $MAJOR >= 20 ))
 then
-	./install_worker.sh
+    ./install_worker.sh
 else
-	./build_and_install_worker.sh
+    ./build_and_install_worker.sh
 fi
 popd
 
@@ -85,9 +85,11 @@ sudo apt -y install bcompare
 ###############################################################################
 # Programmers stuff.
 
-sudo apt -y install g++ cmake pkg-config
-sudo apt -y install tmux xsel
-sudo apt -y install libsfml-dev
+sudo apt -y \
+    install g++ cmake pkg-config \
+    install tmux xsel \
+    install libsfml-dev \
+    libopencv-dev libyaml-cpp-dev
 
 ###############################################################################
 
