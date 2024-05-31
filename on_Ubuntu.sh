@@ -42,6 +42,12 @@ mkdir -p ~/.local/bin/
 mkdir -p ~/.local/opt/
 
 ###############################################################################
+
+# No splash screen.
+sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT.*/#&\nGRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
+sudo update-grub2
+
+###############################################################################
 # Julia.
 
 ./install_julia.sh
