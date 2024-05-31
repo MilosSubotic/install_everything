@@ -33,6 +33,7 @@ rm viber.deb
 
 # Telegram.
 sudo apt -y install telegram-desktop
+sudo apt -y --fix-broken install
 
 
 # WhatsApp.
