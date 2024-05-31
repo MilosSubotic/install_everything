@@ -110,9 +110,10 @@ pushd kicad/
 popd
 
 ./install_qt.sh
-#./install_ros.sh
+./install_ros2.sh
 
-./install_latex.sh
+#FIXME Some problems.
+#./install_latex.sh
 
 #FIXME kicad and freecad libocct are in fight.
 #./install_freecad.sh
