@@ -7,7 +7,7 @@ pushd tmp/
 ###############################################################################
 # Discord.
 
-V=0.0.48
+V=0.0.54
 wget https://dl.discordapp.net/apps/linux/$V/discord-$V.deb
 sudo dpkg -i discord-$V.deb
 sudo apt -y --fix-broken install
@@ -33,6 +33,7 @@ rm viber.deb
 
 # Telegram.
 sudo apt -y install telegram-desktop
+
 
 # WhatsApp.
 sudo apt install snapd
