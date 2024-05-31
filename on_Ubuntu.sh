@@ -95,7 +95,8 @@ sudo apt -y \
     install g++ cmake pkg-config \
     install tmux xsel \
     install libsfml-dev \
-    libopencv-dev libyaml-cpp-dev
+    libopencv-dev libyaml-cpp-dev \
+    net-tools
 
 ###############################################################################
 
