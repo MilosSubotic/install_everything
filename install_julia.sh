@@ -1,8 +1,8 @@
 #!/bin/bash
 
 V1=1
-V2=6
-V3=7
+V2=10
+V3=4
 A=x86_64
 F=julia-$V1.$V2.$V3-linux-$A.tar.gz
 if [ "$A" == "x86_64" ]
