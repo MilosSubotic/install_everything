@@ -15,7 +15,7 @@ function set_preference() {
 }
 
 set_preference proxy.type manual
-set_preference proxy.manual.hostname "http://ftn.proxy"
+set_preference proxy.manual.hostname "ftn.proxy"
 set_preference proxy.manual.port 8080
 set_preference proxy.manual.type HTTP
 set_preference network.proxy "http://ftn.proxy:8080/"
