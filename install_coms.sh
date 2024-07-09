@@ -13,7 +13,7 @@ sudo dpkg -i discord-$V.deb
 sudo apt -y --fix-broken install
 if [[ "$http_proxy" != "" ]];
 then
-	ADD='--proxy-server="proxy.uns.ac.rs:8080"'
+	ADD="--proxy-server=\"${http_proxy#*//}\""
 	WHAT="Exec=/usr/share/discord/Discord"
 	WHAT="${WHAT////\\/}"
 	F="/usr/share/discord/discord.desktop"
