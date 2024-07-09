@@ -1,0 +1,11 @@
+--- a/boards/Trenz_Electronic/TE0820_4CG_1I/3.0/3.0/preset.xml	2024-05-02 15:02:55.000000000 +0200
++++ b/boards/Trenz_Electronic/TE0820_4CG_1I/3.0/3.0/preset.xml	2024-05-02 16:17:52.734647034 +0200
+@@ -22,7 +22,7 @@
+         <user_parameter  name="CONFIG.PSU__I2C0__PERIPHERAL__IO" value="MIO 38 .. 39"/>
+         <user_parameter  name="CONFIG.PSU__SD0__PERIPHERAL__ENABLE" value="1"/>
+         <user_parameter  name="CONFIG.PSU__SD0__SLOT_TYPE" value="eMMC"/>
+-        <user_parameter  name="CONFIG.PSU__SD0__PERIPHERAL__IO" value="MIO 13 .. 22"/>
++        <user_parameter  name="CONFIG.PSU__SD0__PERIPHERAL__IO" value="MIO 13 .. 16 21 22"/>
+         <user_parameter  name="CONFIG.PSU__SD0__RESET__ENABLE" value="1"/>
+         <user_parameter  name="CONFIG.PSU__SD0__GRP_POW__IO" value="MIO 23"/>
+         <user_parameter  name="CONFIG.PSU__TTC0__PERIPHERAL__ENABLE" value="1"/>

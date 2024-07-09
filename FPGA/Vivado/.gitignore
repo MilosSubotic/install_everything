@@ -1,0 +1,5 @@
+# Xilinx Vivado stuff.
+vivado*.jou
+vivado*.log
+vivado*.str
+hs_err_*.log
