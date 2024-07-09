@@ -25,9 +25,12 @@ elif (( $MAJOR < 20 ))
 	#sudo -E add-apt-repository --yes ppa:kicad/kicad-5.1-releases
 	sudo -E add-apt-repository --yes ppa:kicad/kicad-6.0-releases
 	# Copy config.
-	cp -rfv $D/.config ~/
+	mkdir ~/.config/kicad/
+	cp -rfv $D/.config/kicad/6.0 ~/.config/kicad/
 else
 	sudo -E add-apt-repository --yes ppa:kicad/kicad-8.0-releases
+	# Copy config.
+	cp -rfv $D/.config/kicad/8.0 ~/.config/kicad/
 fi
 sudo apt update
 sudo apt install -y kicad
