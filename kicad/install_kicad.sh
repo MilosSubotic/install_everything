@@ -21,7 +21,7 @@ D="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 if (( $MAJOR < 16 ))
 then
 	sudo -E add-apt-repository --yes ppa:js-reynaud/kicad-5
-elif (( $MAJOR < 22 ))
+elif (( $MAJOR < 20 ))
 	#sudo -E add-apt-repository --yes ppa:kicad/kicad-5.1-releases
 	sudo -E add-apt-repository --yes ppa:kicad/kicad-6.0-releases
 	# Copy config.
