@@ -17,4 +17,8 @@ glxinfo | grep "OpenGL version"
 
 ./DaVinci_Resolve_${V}_Linux.run --nonroot --directory ~/.local/opt/DaVinci_Resolve/${V}/
 
-sudo mkdir -p " /var/BlackmagicDesign/DaVinci Resolve"
+sudo mkdir -p "/var/BlackmagicDesign/DaVinci Resolve"
+
+mkdir -p ~/.local/bin
+
+ln -s ~/.local/opt/DaVinci_Resolve/${V}/bin/resolve ~/.local/bin/DaVinci_Resolve_${V}

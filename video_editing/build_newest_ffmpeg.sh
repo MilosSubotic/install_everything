@@ -3,7 +3,7 @@
 # URL:
 # https://trac.ffmpeg.org/wiki/CompilationGuide/Ubuntu#FFmpeg
 
-PREFIX=$HOME/.local/ffmpeg
+PREFIX=$HOME/.local/opt/ffmpeg
 
 sudo apt update -qq && sudo apt -y install \
     autoconf \
@@ -80,3 +80,11 @@ cd ..
 
 popd tmp/
 rm -rf tmp/
+
+for p in ffmpeg ffplay
+do
+    ln -sf $PREFIX/bin/$p ~/.local/bin/${p}_git
+    #ln -sf ~/.local/bin/${p}_git ~/.local/bin/${p}
+done
+
+
