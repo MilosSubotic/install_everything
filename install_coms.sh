@@ -13,13 +13,13 @@ sudo dpkg -i discord-$V.deb
 sudo apt -y --fix-broken install
 if [[ "$http_proxy" != "" ]];
 then
-	ADD="--proxy-server=\"${http_proxy#*//}\""
-	WHAT="Exec=/usr/share/discord/Discord"
-	WHAT="${WHAT////\\/}"
-	F="/usr/share/discord/discord.desktop"
-	sudo sed -i "s/^$WHAT/$WHAT $ADD/g" "$F"
-	sudo xdg-desktop-menu install --manual "$F"
-	sudo xdg-desktop-icon install --manual "$F"
+    ADD="--proxy-server=\"${http_proxy#*//}\""
+    WHAT="Exec=/usr/share/discord/Discord"
+    WHAT="${WHAT////\\/}"
+    F="/usr/share/discord/discord.desktop"
+    sudo sed -i "s/^$WHAT/$WHAT $ADD/g" "$F"
+    sudo xdg-desktop-menu install --manual "$F"
+    sudo xdg-desktop-icon install --manual "$F"
 fi
 
 ###############################################################################
