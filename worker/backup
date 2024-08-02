@@ -115,7 +115,7 @@ do
 					archiveExtension=".tar.bz2"
 				;;
 				zip)
-					archiveCommand="zip -9qr"
+					archiveCommand="zip -9qry"
 					archiveExtension=".zip"
 				;;
 				*) 
@@ -141,7 +141,7 @@ Try \`backup --help' for more information."
 						archiveExtension=".tar.bz2"
 					;;
 					z)
-						archiveCommand="zip -9qr"
+						archiveCommand="zip -9qry"
 						archiveExtension=".zip"
 					;;
 					*) 
