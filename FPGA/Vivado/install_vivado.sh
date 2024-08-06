@@ -22,5 +22,6 @@ then
         sudo rm /etc/profile.d/proxy.sh
         mkdir -p ~/.local/bin/
         cp priv/unproxy_vitis ~/.local/bin/
+        cp priv/unproxy_vivado ~/.local/bin/
     fi
 fi
