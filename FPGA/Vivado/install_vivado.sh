@@ -13,3 +13,14 @@ sudo bash FPGAs_AdaptiveSoCs_Unified_${V}*_Lin64.bin
 source /opt/Xilinx/Vivado/${V}/settings64.sh
 
 sudo $XILINX_VITIS/scripts/installLibs.sh
+
+if [[ "$V" == "2024.1" ]]
+then
+    if [[ "$http_proxy" != "" ]]
+    then
+        cat /etc/profile.d/proxy.sh >> ~/.profile
+        sudo rm /etc/profile.d/proxy.sh
+        mkdir -p ~/.local/bin/
+        cp priv/unproxy_vitis ~/.local/bin/
+    fi
+fi
