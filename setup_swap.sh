@@ -2,7 +2,7 @@
 
 cat /proc/sys/vm/swappiness
 
-cat | sudo tee -a /etc/sysctl.conf << EOF
+cat << EOF | sudo tee -a /etc/sysctl.conf
 vm.swappiness=10
 EOF
 
