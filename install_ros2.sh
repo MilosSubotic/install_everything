@@ -52,10 +52,15 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-a
 
 sudo apt update
 
+#FIXME python3-paraview use python3-vtk7,
+# but ros-${ROS_DISTRO}-desktop needs python3-vtk9,
+# and that is where conflict occurs.
+sudo apt -y purge python3-paraview
+
 sudo apt -y install \
-    tmux xsel \
     python3-rosdep2 \
     python3-colcon-ros \
+    python3-colcon-package-selection \
     ros-${ROS_DISTRO}-desktop \
     ros-${ROS_DISTRO}-moveit \
     ros-${ROS_DISTRO}-moveit-msgs \
@@ -76,4 +81,8 @@ sudo apt -y install \
     ros-${ROS_DISTRO}-gazebo-plugins \
     ros-${ROS_DISTRO}-gazebo-ros \
     ros-${ROS_DISTRO}-gazebo-ros2-control \
-    ros-${ROS_DISTRO}-launch-param-builder
+    ros-${ROS_DISTRO}-launch-param-builder \
+    ros-${ROS_DISTRO}-tf-transformations \
+    python3-pip
+# Problem with proxy on root.
+#sudo pip3 install transforms3d
