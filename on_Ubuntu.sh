@@ -91,10 +91,10 @@ sudo apt -y install bcompare
 ###############################################################################
 # Programmers stuff.
 
-sudo apt -y \
-    install g++ cmake pkg-config \
-    install tmux xsel \
-    install libsfml-dev \
+sudo apt -y install \
+    g++ cmake pkg-config \
+    tmux xsel \
+    libsfml-dev \
     libopencv-dev libyaml-cpp-dev \
     net-tools
 
@@ -113,11 +113,9 @@ popd
 ./install_qt.sh
 ./install_ros2.sh
 
-#FIXME Some problems.
-#./install_latex.sh
+./install_latex.sh
 
-#FIXME kicad and freecad libocct are in fight.
-#./install_freecad.sh
+./install_freecad.sh
 
 pushd Quartus/
 ./install.sh

@@ -31,6 +31,7 @@ then
 else
 	sudo -E add-apt-repository --yes ppa:kicad/kicad-8.0-releases
 	# Copy config.
+	mkdir ~/.config/kicad/
 	cp -rfv $D/.config/kicad/8.0 ~/.config/kicad/
 fi
 sudo apt update
