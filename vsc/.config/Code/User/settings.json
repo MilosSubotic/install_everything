@@ -1,0 +1,7 @@
+{
+    "editor.renderWhitespace": "all",
+    "editor.insertSpaces": false,
+    "[shellscript]": {
+        "editor.insertSpaces": true
+    }
+}

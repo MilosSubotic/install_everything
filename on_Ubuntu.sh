@@ -67,9 +67,7 @@ popd
 ###############################################################################
 # VSC
 
-wget --content-disposition https://go.microsoft.com/fwlink/?LinkID=760868
-sudo dpkg -i code*.deb
-rm code*.deb
+install_vsc.sh
 
 ###############################################################################
 # Google Chrome.
