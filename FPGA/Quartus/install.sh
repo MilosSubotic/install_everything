@@ -20,26 +20,17 @@ if [[ "$DIST" == "Ubuntu" ]]
 then
     if (( $MAJOR >= 20 ))
     then
-        if true
-        then
-            VERSION_MAJOR=22
-            VERSION_MINOR=1
-        else
-            VERSION_MAJOR=20
-            VERSION_MINOR=1
-        fi
+        # Above that, they need license.
+        VERSION=20.1.1
     elif (( $MAJOR >= 18 ))
     then
-        VERSION_MAJOR=19
-        VERSION_MINOR=1
+        VERSION=19.1
     else
-        VERSION_MAJOR=18
-        VERSION_MINOR=0
+        VERSION=18.0
     fi
-    VERSION=$VERSION_MAJOR.$VERSION_MINOR
 else
     # Other dists.
-    echo "Should not be here!"
+    echo "Not supported distro!"
     exit 2
 fi
 
@@ -78,7 +69,6 @@ then
     sudo dpkg --add-architecture i386
     sudo apt-get update
     sudo apt-get install -y build-essential
-    sudo apt-get -y install wine-stable # For LPRS1 asm.
     
     if (( $MAJOR < 18 ))
     then
@@ -108,18 +98,22 @@ then
         echo "Not implemented Ubuntu version!"
     elif (( $MAJOR == 20 ))
     then
-        if (( $VERSION < 22 ))
-        then
-            # URL: https://askubuntu.com/questions/1121815/how-do-i-run-mentor-modelsim-questa-in-ubuntu-18-04
-            sudo apt-get install -y gcc-multilib g++-multilib \
-                lib32z1 lib32stdc++6 lib32gcc1 \
-                expat:i386 fontconfig:i386 libfreetype6:i386 libexpat1:i386 libc6:i386 libgtk-3-0:i386 \
-                libcanberra0:i386 libpng16-16:i386 libice6:i386 libsm6:i386 libncurses5:i386 zlib1g:i386 \
-                libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft2:i386 libxrender1:i386 \
-                libxt6:i386 libxtst6:i386
-        else
-            #TODO Do not tested on clean system what is needed.
-        fi
+        # URL: https://askubuntu.com/questions/1121815/how-do-i-run-mentor-modelsim-questa-in-ubuntu-18-04
+        sudo apt-get install -y gcc-multilib g++-multilib \
+            lib32z1 lib32stdc++6 lib32gcc1 \
+            expat:i386 fontconfig:i386 libfreetype6:i386 libexpat1:i386 libc6:i386 libgtk-3-0:i386 \
+            libcanberra0:i386 libpng16-16:i386 libice6:i386 libsm6:i386 libncurses5:i386 zlib1g:i386 \
+            libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft2:i386 libxrender1:i386 \
+            libxt6:i386 libxtst6:i386
+    elif (( $MAJOR == 22 ))
+    then
+        #TODO Test
+        sudo apt-get install -y gcc-multilib g++-multilib \
+            lib32z1 lib32stdc++6 \
+            expat:i386 fontconfig:i386 libfreetype6:i386 libexpat1:i386 libc6:i386 libgtk-3-0:i386 \
+            libcanberra0:i386 libpng16-16:i386 libice6:i386 libsm6:i386 libncurses5:i386 zlib1g:i386 \
+            libx11-6:i386 libxau6:i386 libxdmcp6:i386 libxext6:i386 libxft2:i386 libxrender1:i386 \
+            libxt6:i386 libxtst6:i386
     else
         # Other versions.
         echo "Not supported Ubuntu version!"
@@ -152,7 +146,7 @@ sudo ./Quartus*Setup-$VERSION*-linux.run \
     --accept_eula 1 \
     --installdir $PREFIX
 
-# Need it for v21.1
+# Need it for v20 - v21.1
 sudo chmod -R a+rX $PREFIX/
 
 ###############################################################################
@@ -165,7 +159,8 @@ cd Arrow_USB_Programmer/
 sudo rmmod ftdi_sio
 sudo rmmod usbserial
 echo 'blacklist ftdi_sio' | sudo tee /etc/modprobe.d/blacklist.conf -a
-echo 'blacklist usbserial' | sudo tee /etc/modprobe.d/blacklist.conf -a
+#FIXME This make a problem for Arduino.
+#echo 'blacklist usbserial' | sudo tee /etc/modprobe.d/blacklist.conf -a
 
 # Install rules and driver lib.
 sudo cp 51-usbblaster.rules /etc/udev/rules.d/
@@ -202,7 +197,7 @@ sudo usermod -a -G dialout $USER
 
 echo "To use Quartus, please, log out and then log in."
 echo "For some IP cores, like Nios II CPU,"
-echo "license at RT-RK institute is: 1800@licserver-win1"
+echo "license is: 1800@licserver-win1"
 echo "To test connection with board run: jtagconfig"
 
 ###############################################################################

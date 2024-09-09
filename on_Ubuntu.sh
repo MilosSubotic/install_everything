@@ -113,6 +113,7 @@ popd
 ./install_qt.sh
 ./install_ros2.sh
 
+
 ./install_latex.sh
 
 ./install_freecad.sh
@@ -120,6 +121,8 @@ popd
 pushd Quartus/
 ./install.sh
 popd
+
+sudo apt-get -y install wine-stable
 
 ###############################################################################
 

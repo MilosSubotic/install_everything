@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo apt -y install texlive-full texmaker
+#TODO Need to test. this.
+echo "\n\n\n\n\n\n\n\n" | sudo apt -y install texlive-full texmaker
 
 sudo apt -y install hunspell-en-us hunspell-sr
 # Texmaker -> Options -> Configure Texmaker -> Editor -> Spelling dictionary
@@ -8,5 +9,3 @@ sudo apt -y install hunspell-en-us hunspell-sr
 
 code --install-extension James-Yu.latex-workshop
 
-#apm install latex language-latex
-#patch -d$HOME/.atom/packages/latex/lib/openers/ -p1 < latex_evince.patch
