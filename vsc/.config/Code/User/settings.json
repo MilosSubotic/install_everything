@@ -3,5 +3,6 @@
     "editor.insertSpaces": false,
     "[shellscript]": {
         "editor.insertSpaces": true
-    }
+    },
+    "editor.fontFamily": "Noto Sans Mono"
 }
