@@ -34,6 +34,7 @@ then
 fi
 cat > $F << EOF
 push!(LOAD_PATH, ".")
+ENV["JULIA_EDITOR"] = "code"
 EOF
 
 
