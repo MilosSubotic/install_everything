@@ -4,14 +4,17 @@
 D=`dirname "${BASH_SOURCE[0]}"`
 D="`cd "$D/" 2>&1 > /dev/null && pwd`"
 
-P=$D/freecam_vispy.patch
-
 mkdir -p ~/.local/opt/
 pushd ~/.local/opt/
 git clone https://bitbucket.org/jpcgt/flatcam
+pushd flatcam
+#TODO Why master does not work?
 git checkout origin/Beta
+#git checkout ebf5cb9e
+patch -p1 < $D/flatcam_easy_install.patch
 bash setup_ubuntu.sh
-patch -p1 < $P
+patch -p1 < $D/flatcam_vispy.patch
+popd
 popd
 
 # Need shapely 1.7.0, bcs 2.0.1 does not work.

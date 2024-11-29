@@ -1,0 +1,8 @@
+--- a/setup_ubuntu.sh	2024-11-29 20:38:11.424668357 +0100
++++ b/setup_ubuntu.sh	2024-11-29 20:38:19.156855862 +0100
+@@ -48,4 +48,4 @@ sudo -H python3 -m pip install --upgrade
+ 	pyserial \
+ 	testresources
+ 
+-sudo -H easy_install -U distribute
++#sudo -H easy_install -U distribute
