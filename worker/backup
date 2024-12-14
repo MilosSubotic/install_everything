@@ -71,7 +71,7 @@ fi
 
 if test "$1" == "--version"
 then
-	echo "backup 2.0
+	echo "backup 2.2
 License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -194,7 +194,7 @@ Try \`backup --help' for more information."
 			dstFile="${dst##*/}"
 			srcFile="${src##*/}"
 
-			bash -c "cd $dir; $archiveCommand \"$dstFile\" \"$srcFile\""
+			bash -c "cd \"$dir\"; $archiveCommand \"$dstFile\" \"$srcFile\""
 
 		fi
 	
