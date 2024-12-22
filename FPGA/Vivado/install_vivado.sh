@@ -18,10 +18,17 @@ if [[ "$V" == "2024.1" ]]
 then
     if [[ "$http_proxy" != "" ]]
     then
+        #TODO Does it realy need this.
         cat /etc/profile.d/proxy.sh >> ~/.profile
         sudo rm /etc/profile.d/proxy.sh
-        mkdir -p ~/.local/bin/
-        cp priv/unproxy_vitis ~/.local/bin/
-        cp priv/unproxy_vivado ~/.local/bin/
+
+        #TODO Test this, espec with Vitis and install_brds.sh
+        sudo tee -a /opt/Xilinx/Vivado/${V}/settings64.sh << EOF
+unset http_proxy
+unset https_proxy
+EOF
+        #mkdir -p ~/.local/bin/
+        #cp priv/unproxy_vitis ~/.local/bin/
+        #cp priv/unproxy_vivado ~/.local/bin/
     fi
 fi
