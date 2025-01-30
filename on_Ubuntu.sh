@@ -36,7 +36,7 @@ sudo apt -y install aptitude
 sudo dpkg --add-architecture i386
 sudo apt -y install libc6:i386 libncurses5:i386 libstdc++6:i386
 
-sudo apt -y install git build-essential
+sudo apt -y install git build-essential net-tools curl sshpass
 
 mkdir -p ~/.local/bin/
 mkdir -p ~/.local/opt/
@@ -93,8 +93,8 @@ sudo apt -y install \
     g++ cmake pkg-config \
     tmux xsel \
     libsfml-dev \
-    libopencv-dev libyaml-cpp-dev \
-    net-tools
+    libopencv-dev libyaml-cpp-dev
+    
 
 ###############################################################################
 
