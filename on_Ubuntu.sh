@@ -22,7 +22,7 @@ MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
 # Global stuff.
 
 # For larger fonts.
-gsettings set org.gnome.desktop.interface text-scaling-factor 1.5
+gsettings set org.gnome.desktop.interface text-scaling-factor 1.2
 # For changing language.
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source "['<Alt>Right']"
 gsettings set org.gnome.desktop.wm.keybindings switch-input-source-backward "['<Alt>Left']"
@@ -32,11 +32,7 @@ sudo apt -y upgrade
 
 sudo apt -y install aptitude
 
-# 32b app support.
-sudo dpkg --add-architecture i386
-sudo apt -y install libc6:i386 libncurses5:i386 libstdc++6:i386
-
-sudo apt -y install git build-essential net-tools curl sshpass
+sudo apt -y install git net-tools curl sshpass
 
 mkdir -p ~/.local/bin/
 mkdir -p ~/.local/opt/
@@ -46,6 +42,29 @@ mkdir -p ~/.local/opt/
 # No splash screen.
 sudo sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT.*/#&\nGRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
 sudo update-grub2
+
+###############################################################################
+# Programmers stuff.
+
+sudo apt -y install \
+    build-essential \
+    g++ cmake pkg-config \
+    tmux xsel \
+    libsfml-dev \
+    libopencv-dev libyaml-cpp-dev
+
+# 32b app support.
+sudo dpkg --add-architecture i386
+sudo apt -y install libc6:i386 libstdc++6:i386
+if (( $MAJOR >= 24 ))
+then
+    sudo apt -y install libncurses6:i386
+else
+    sudo apt -y install libncurses5:i386
+fi
+
+sudo apt -y install ipython3
+ 
 
 ###############################################################################
 # Julia.
@@ -87,16 +106,6 @@ sudo apt update
 sudo apt -y install bcompare
 
 ###############################################################################
-# Programmers stuff.
-
-sudo apt -y install \
-    g++ cmake pkg-config \
-    tmux xsel \
-    libsfml-dev \
-    libopencv-dev libyaml-cpp-dev
-    
-
-###############################################################################
 
 ./install_git_stuff.sh
 
@@ -121,6 +130,11 @@ pushd Quartus/
 popd
 
 sudo apt-get -y install wine-stable
+
+###############################################################################
+
+sudo apt -y install apt-file
+sudo apt-file update
 
 ###############################################################################
 

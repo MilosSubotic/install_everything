@@ -15,6 +15,7 @@ PORT="8080"
 gsettings set org.gnome.system.proxy mode manual
 
 function set_proxy() {
+	#FIXME Does not work on Ubuntu 24 
 	#echo "${1}_proxy=\"$1://$URL:$PORT/\"" >> $F
 	sudo dbus-send --system --print-reply --dest=com.ubuntu.SystemService --type=method_call / com.ubuntu.SystemService.set_proxy string:"$1" string:"$1://$URL:$PORT"
 	gsettings set org.gnome.system.proxy.$1 host "$URL"

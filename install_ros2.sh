@@ -1,25 +1,38 @@
 #!/bin/bash
 ##############################################################################
+# Automatically figure out which ROS distro you need.
 
-DIST=`lsb_release --id | sed 's/^Distributor ID:[\t ]*\(.*\)$/\1/'`
-if [[ "$DIST" != "Ubuntu" ]]
-then
-	echo "Ubuntu only!"
-	exit 1
-fi
+. /etc/os-release
 
-R=`lsb_release --release`
-MAJOR=`echo $R | sed -n 's/^Release:[\t ]*\([0-9]\+\)\.\([0-9]\+\)$/\1/p'`
+MAJOR=`echo $VERSION_ID | sed -n 's/\([0-9]\+\)\(\.[0-9]\+\)\?/\1/p'`
 
-if (( $MAJOR == 22 ))
+if [[ "$ID" == "ubuntu" ]]
 then
-	ROS_DISTRO=humble
-elif (( $MAJOR == 20 ))
-then
-	ROS_DISTRO=galactic
-else
-	echo "Not supported Ubuntu version!"
+  if (( $MAJOR == 24 ))
+  then
+    ROS_DISTRO='jazzy'
+  elif (( $MAJOR == 22 ))
+  then
+    ROS_DISTRO=humble
+  elif (( $MAJOR == 20 ))
+  then
+    ROS_DISTRO=galactic
+  else
+    echo "Not supported version!"
     exit 1
+  fi
+elif [[ "$ID" == "debian" ]]
+then
+  if (( $MAJOR == 12 ))
+  then
+    ROS_DISTRO=humble
+  else
+    echo "Not supported version!"
+    exit 1
+  fi
+else
+  echo "Not supported OS!"
+  exit 1
 fi
 
 echo "ROS_DISTRO=$ROS_DISTRO"
