@@ -37,8 +37,8 @@ sudo apt -y --fix-broken install
 
 
 # WhatsApp.
-sudo apt install snapd
-sudo snap install whatsapp-for-linux
+sudo apt -y install snapd
+#TODO Figure it out sudo -E snap install whatsapp-for-linux
 
 ###############################################################################
 popd

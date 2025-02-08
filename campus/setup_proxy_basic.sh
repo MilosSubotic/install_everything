@@ -9,3 +9,5 @@ sudo apt update
 # If need immidiately to use it.
 source /etc/profile.d/proxy.sh
 
+sudo -E snap set system proxy.http="$http_proxy"
+sudo -E snap set system proxy.https="$https_proxy"

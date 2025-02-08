@@ -136,6 +136,12 @@ sudo apt-get -y install wine-stable
 sudo apt -y install apt-file
 sudo apt-file update
 
+sudo apt -y install nfs-client nfs-server
+sudo -E tee -a /etc/exports << EOF
+$HOME/Public    *(rw,sync,no_subtree_check)
+EOF
+sudo service nfs-server restart
+
 ###############################################################################
 
 echo "End"
