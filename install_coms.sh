@@ -29,11 +29,12 @@ fi
 wget https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
 sudo apt -y purge viber
 sudo dpkg -i viber.deb
+sudo apt -y install --fix-broken
 rm viber.deb
 
 # Telegram.
 sudo apt -y install telegram-desktop
-sudo apt -y --fix-broken install
+sudo apt -y install --fix-broken
 
 
 # WhatsApp.
