@@ -98,4 +98,8 @@ sudo apt -y install \
     ros-${ROS_DISTRO}-tf-transformations \
     python3-pip
 # Problem with proxy on root.
-#sudo pip3 install transforms3d
+sudo -E pip3 install transforms3d
+
+# If have problem with setuptools:
+# https://github.com/pypa/setuptools/issues/4483
+#sudo -E pip3 install setuptools==70
