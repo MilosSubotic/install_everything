@@ -70,8 +70,24 @@ sudo apt update
 # and that is where conflict occurs.
 sudo apt -y purge python3-paraview
 
+if (( $MAJOR >= 24 ))
+then
+    sudo apt -y install \
+        python3-rosdep \
+        ros-${ROS_DISTRO}-gazebo-plugins \
+        ros-${ROS_DISTRO}-gazebo-ros \
+        ros-${ROS_DISTRO}-gazebo-ros2-control \
+
+else
+    sudo apt -y install \
+        python3-rosdep2 \
+        ros-$ROS_DISTRO-ros-gz-sim \
+        ros-$ROS_DISTRO-ros-gz-bridge \
+        ros-$ROS_DISTRO-gz-ros2-control \
+        
+fi
+
 sudo apt -y install \
-    python3-rosdep2 \
     python3-colcon-ros \
     python3-colcon-package-selection \
     ros-${ROS_DISTRO}-desktop \
@@ -91,9 +107,6 @@ sudo apt -y install \
     ros-${ROS_DISTRO}-hardware-interface \
     ros-${ROS_DISTRO}-backward-ros \
     ros-${ROS_DISTRO}-moveit-ros-move-group \
-    ros-${ROS_DISTRO}-gazebo-plugins \
-    ros-${ROS_DISTRO}-gazebo-ros \
-    ros-${ROS_DISTRO}-gazebo-ros2-control \
     ros-${ROS_DISTRO}-launch-param-builder \
     ros-${ROS_DISTRO}-tf-transformations \
     python3-pip
