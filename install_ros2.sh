@@ -74,17 +74,16 @@ if (( $MAJOR >= 24 ))
 then
     sudo apt -y install \
         python3-rosdep \
-        ros-${ROS_DISTRO}-gazebo-plugins \
-        ros-${ROS_DISTRO}-gazebo-ros \
-        ros-${ROS_DISTRO}-gazebo-ros2-control \
-
-else
-    sudo apt -y install \
-        python3-rosdep2 \
         ros-$ROS_DISTRO-ros-gz-sim \
         ros-$ROS_DISTRO-ros-gz-bridge \
         ros-$ROS_DISTRO-gz-ros2-control \
         
+else
+    sudo apt -y install \
+        python3-rosdep2 \
+        ros-${ROS_DISTRO}-gazebo-plugins \
+        ros-${ROS_DISTRO}-gazebo-ros \
+        ros-${ROS_DISTRO}-gazebo-ros2-control \
 fi
 
 sudo apt -y install \
