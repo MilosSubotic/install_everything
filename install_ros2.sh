@@ -114,9 +114,11 @@ else
 fi
 
 
-# Problem with proxy on root.
 sudo -E pip3 install transforms3d
 
 # If have problem with setuptools:
 # https://github.com/pypa/setuptools/issues/4483
 #sudo -E pip3 install setuptools==70
+
+
+echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc

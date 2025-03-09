@@ -32,10 +32,24 @@ sudo apt -y upgrade
 
 sudo apt -y install aptitude
 
-sudo apt -y install git net-tools curl sshpass
+sudo apt -y install git net-tools curl sshpass 
 
 mkdir -p ~/.local/bin/
 mkdir -p ~/.local/opt/
+
+###############################################################################
+# Remote access.
+
+sudo apt -y install avahi-daemon
+sudo service avahi-daemon restart
+
+sudo apt -y install openssh-server 
+
+sudo apt -y install nfs-client nfs-server
+sudo -E tee -a /etc/exports << EOF
+$HOME/Public    *(rw,sync,no_subtree_check)
+EOF
+sudo service nfs-server restart
 
 ###############################################################################
 
@@ -135,12 +149,6 @@ sudo apt-get -y install wine-stable
 
 sudo apt -y install apt-file
 sudo apt-file update
-
-sudo apt -y install nfs-client nfs-server
-sudo -E tee -a /etc/exports << EOF
-$HOME/Public    *(rw,sync,no_subtree_check)
-EOF
-sudo service nfs-server restart
 
 ###############################################################################
 
