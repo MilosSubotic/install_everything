@@ -26,11 +26,15 @@ fi
 # Comms.
 
 # Viber.
-wget https://download.cdn.viber.com/cdn/desktop/Linux/viber.deb
-sudo apt -y purge viber
-sudo dpkg -i viber.deb
-sudo apt -y install --fix-broken
-rm viber.deb
+sudo apt -y install flatpak
+sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+sudo flatpak install flathub com.viber.Viber
+mkdir ~/.local/bin
+cat >> ~/.local/bin/viber << EOF
+#!/bin/bash
+flatpak run com.viber.Viber
+EOF
+chmod a+x ~/.local/bin/viber
 
 # Telegram.
 sudo apt -y install telegram-desktop
