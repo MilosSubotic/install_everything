@@ -123,9 +123,7 @@ sudo -E pip3 install transforms3d
 
 echo "export RCUTILS_COLORIZED_OUTPUT=1" >> ~/.bashrc
 
-cat > log_for_node << EOF
-#!/bin/bash
-cat `ls -tw1 $HOME/.ros/log/$1* | head -n1`
-EOF
+echo '#!/bin/bash' > log_for_node
+echo 'cat `ls -tw1 $HOME/.ros/log/$1* | head -n1`' >> log_for_node
 chmod 755 log_for_node
 sudo mv log_for_node /opt/ros/$ROS_DISTRO/bin/
