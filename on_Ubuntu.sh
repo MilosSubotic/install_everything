@@ -40,16 +40,7 @@ mkdir -p ~/.local/opt/
 ###############################################################################
 # Remote access.
 
-sudo apt -y install avahi-daemon
-sudo service avahi-daemon restart
-
-sudo apt -y install openssh-server 
-
-sudo apt -y install nfs-client nfs-server
-sudo -E tee -a /etc/exports << EOF
-$HOME/Public    *(rw,sync,no_subtree_check)
-EOF
-sudo service nfs-server restart
+./install_remote.sh
 
 ###############################################################################
 
