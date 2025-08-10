@@ -43,7 +43,18 @@ sudo snap install telegram-desktop
 
 # WhatsApp.
 sudo apt -y install snapd
-#TODO Figure it out sudo -E snap install whatsapp-for-linux
+sudo -E snap install whatsdesk
+
+#TODO https://www.google.com/search?q=Franz+install+ubuntu&sca_esv=7b647de37a4058b4&cs=0&ei=TpaXaOeSBbCMxc8P8oS_gQM&ved=0ahUKEwjn8ePJsP6OAxUwRvEDHXLCLzAQ4dUDCBA&uact=5&oq=Franz+install+ubuntu&gs_lp=Egxnd3Mtd2l6LXNlcnAiFEZyYW56IGluc3RhbGwgdWJ1bnR1MgYQABgIGB4yBRAAGO8FMgUQABjvBUjvG1CaBFidGnABeAGQAQCYAa8BoAHSDaoBBDEuMTS4AQPIAQD4AQGYAgygAuMKwgIKEAAYsAMY1gQYR8ICDRAAGIAEGLADGEMYigXCAhMQLhiABBiwAxhDGMgDGIoF2AEBwgIFEC4YgATCAg0QLhiABBhDGNQCGIoFwgIKEC4YgAQYQxiKBcICBRAAGIAEwgIUEC4YgAQYlwUY3AQY3gQY3wTYAQLCAgcQABiABBgTwgIKEAAYExgWGAoYHsICCBAAGBMYFhgewgIIEAAYgAQYogTCAgkQABiABBgTGA3CAgoQABgTGAcYCBgewgIKEAAYExgFGA0YHsICCBAAGAcYCBgemAMAiAYBkAYMugYECAEYCLoGBggCEAEYFJIHBDEuMTGgB_N1sgcEMC4xMbgH1QrCBwcyLTcuNC4xyAdk&sclient=gws-wiz-serp
+# WhatsApp + Slack + WeChat
+wget --content-disposition https://github.com/meetfranz/franz/releases/download/v5.11.0/franz_5.11.0_amd64.deb
+sudo dpkg -i franz*.deb
+rm -rf franz*.deb
+#https://www.youtube.com/watch?v=ru9cTFbqryk
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak run com.meetfranz.Franz
+
+#FIXME does not work
 
 ###############################################################################
 popd
