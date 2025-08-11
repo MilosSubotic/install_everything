@@ -29,6 +29,7 @@ fi
 sudo apt -y install flatpak
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 sudo flatpak -y install flathub com.viber.Viber
+sudo apt -y install xdg-utils
 mkdir -p ~/.local/bin
 cat >> ~/.local/bin/viber << EOF
 #!/bin/bash
@@ -44,6 +45,7 @@ sudo snap install telegram-desktop
 # WhatsApp.
 sudo apt -y install snapd
 sudo -E snap install whatsdesk
+# Use system proxy. Start on WiFi without proxy, then switch to LAN with proxy.
 
 #TODO https://www.google.com/search?q=Franz+install+ubuntu&sca_esv=7b647de37a4058b4&cs=0&ei=TpaXaOeSBbCMxc8P8oS_gQM&ved=0ahUKEwjn8ePJsP6OAxUwRvEDHXLCLzAQ4dUDCBA&uact=5&oq=Franz+install+ubuntu&gs_lp=Egxnd3Mtd2l6LXNlcnAiFEZyYW56IGluc3RhbGwgdWJ1bnR1MgYQABgIGB4yBRAAGO8FMgUQABjvBUjvG1CaBFidGnABeAGQAQCYAa8BoAHSDaoBBDEuMTS4AQPIAQD4AQGYAgygAuMKwgIKEAAYsAMY1gQYR8ICDRAAGIAEGLADGEMYigXCAhMQLhiABBiwAxhDGMgDGIoF2AEBwgIFEC4YgATCAg0QLhiABBhDGNQCGIoFwgIKEC4YgAQYQxiKBcICBRAAGIAEwgIUEC4YgAQYlwUY3AQY3gQY3wTYAQLCAgcQABiABBgTwgIKEAAYExgWGAoYHsICCBAAGBMYFhgewgIIEAAYgAQYogTCAgkQABiABBgTGA3CAgoQABgTGAcYCBgewgIKEAAYExgFGA0YHsICCBAAGAcYCBgemAMAiAYBkAYMugYECAEYCLoGBggCEAEYFJIHBDEuMTGgB_N1sgcEMC4xMbgH1QrCBwcyLTcuNC4xyAdk&sclient=gws-wiz-serp
 # WhatsApp + Slack + WeChat
