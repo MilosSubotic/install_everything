@@ -57,3 +57,24 @@ mkdir -p ~/.local/bin
 wget https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh
 BINDIR=~/.local/bin bash install.sh
 rm install.sh
+
+
+
+mkdir -p ~/.local/bin/
+wget https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.6_Linux_64bit.zip
+mkdir -p ~/.local/opt/arduino/
+unzip arduino-ide_2.3.6_Linux_64bit.zip -d ~/.local/opt/arduino/
+rm arduino-ide_2.3.6_Linux_64bit.zip
+pushd ~/.local/opt/arduino/arduino-ide_2.3.6_Linux_64bit/
+sudo chown root:root chrome-sandbox
+sudo chmod 4755 chrome-sandbox
+popd
+cat > ~/.local/bin/arduino-ide-2 << EOF
+#!/bin/bash
+
+~/.local/opt/arduino/arduino-ide_2.3.6_Linux_64bit/arduino-ide $@
+
+exit $?
+
+EOF
+chmod a+x ~/.local/bin/arduino-ide-2
