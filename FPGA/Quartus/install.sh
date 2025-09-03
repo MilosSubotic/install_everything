@@ -51,6 +51,14 @@ then
     exit 1
 fi
 
+C=`ls -w1 max10-$VERSION*.qdz | wc -l`
+if (( $C < 1 ))
+then
+    echo "You do not have downloaded MAX10 device file!"
+    echo "You need MAX10 $VERSION qdz file!"
+    exit 1
+fi
+
 ###############################################################################
 # Check for sudo.
 
@@ -169,7 +177,8 @@ sudo cp arrow_usb_blaster.conf /etc/
 sudo install -m 755 libjtag_hw_arrow.so $PREFIX/quartus/linux64/
 
 # Restart udev.
-sudo service udev restart
+sudo systemctl daemon-reload
+sudo systemctl restart udev
 
 cd ..
 
