@@ -21,6 +21,9 @@ then
     wget https://download.anydesk.com/rpi/anydesk_7.0.0-1_arm64.deb
     sudo dpkg -i anydesk*.deb
 
+    # Run on start
+    sudo sed -i '/After=systemd-user-sessions.service/a After=syslog.target network-online.target' /etc/systemd/system/anydesk.service
+
 elif [ `uname -m` == "x86_64" ]
 then
     
@@ -43,8 +46,6 @@ else
     exit 1
 fi
 
-# Run on start
-sudo sed -i '/After=systemd-user-sessions.service/a After=syslog.target network-online.target' /etc/systemd/system/anydesk.service
 # Xorg on login screen.
 sudo sed -i 's/#WaylandEnable=false/WaylandEnable=false/g' /etc/gdm3/custom.conf
 
