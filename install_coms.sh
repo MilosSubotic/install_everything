@@ -40,6 +40,7 @@ chmod a+x ~/.local/bin/viber
 # Telegram.
 #sudo apt -y install telegram-desktop
 #sudo apt -y install --fix-broken
+sudo apt -y install snapd
 sudo snap install telegram-desktop
 
 # WhatsApp.
