@@ -26,6 +26,12 @@ popd
 
 rm -rf $F
 
+# Hack because Julia's libcurl.so.4 lacking CURL_OPENSSL_4 API defined.
+pushd ~/.local/opt/julia/$A/julia-$V1.$V2.$V3/lib/julia
+mv libcurl.so.4 libcurl.so.4.orig
+ln -s /lib/x86_64-linux-gnu/libcurl.so.4
+popd
+
 F=~/.julia/config/startup.jl
 mkdir -p $(dirname $F)
 if test -f $F
