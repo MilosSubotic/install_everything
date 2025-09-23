@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# URL:
+# https://www.youtube.com/watch?v=vZl-acIx4H4
+
 #sudo -E add-apt-repository -y ppa:freecad-maintainers/freecad-stable
 #sudo apt update
 #sudo apt install -y freecad openscad1
@@ -12,3 +15,5 @@ mkdir -p ~/.local/opt/FreeCAD
 chmod a+x FreeCAD_${V}-*.AppImage
 mv FreeCAD_${V}*.AppImage ~/.local/opt/FreeCAD/
 ln -sf ~/.local/opt/FreeCAD/FreeCAD_${V}*.AppImage ~/.local/bin/freecad
+
+#TODO Icon from video
