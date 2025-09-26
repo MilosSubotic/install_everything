@@ -16,4 +16,16 @@ chmod a+x FreeCAD_${V}-*.AppImage
 mv FreeCAD_${V}*.AppImage ~/.local/opt/FreeCAD/
 ln -sf ~/.local/opt/FreeCAD/FreeCAD_${V}*.AppImage ~/.local/bin/freecad
 
-#TODO Icon from video
+# Icon
+wget https://www.freecad.org/svg/logo-freecad.svg
+
+mv logo-freecad.svg ~/.local/opt/FreeCAD/
+
+cat > ~/.local/share/applications/freecad.desktop << EOF
+[Desktop Entry]
+Name=FreeCAD
+Type=Application
+Exec=freecad
+Icon=$HOME/.local/opt/FreeCAD/logo-freecad.svg
+Terminal=false
+EOF
