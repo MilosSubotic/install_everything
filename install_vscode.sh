@@ -10,3 +10,4 @@ cp -r vscode/.config ~/
 code --install-extension streetsidesoftware.code-spell-checker
 code --install-extension streetsidesoftware.code-spell-checker-serbian
 code --install-extension shd101wyy.markdown-preview-enhanced
+code --install-extension mhutchie.git-graph
