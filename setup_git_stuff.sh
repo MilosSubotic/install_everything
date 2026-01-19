@@ -53,4 +53,8 @@ function gdiff() {
 		fi
 	fi
 }
+function git_correct_mv() {
+	mv $2 $1
+	git mv $1 $2
+}
 EOF
