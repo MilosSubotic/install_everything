@@ -1,4 +1,4 @@
-workerconfig 4.4.0;
+workerconfig 4.12.1;
 global {
 	lang = "builtin";
 	rows = 3;
@@ -7377,7 +7377,7 @@ buttons {
 				onfiles = true;
 				ondirs = false;
 				recursive = false;
-				requestflags = true;
+				requestflags = false;
 			}
 		}
 	}
@@ -7499,6 +7499,118 @@ buttons {
 		}
 		commands {
 			HelpOp {
+			}
+		}
+	}
+	button {
+		position = 672;
+		title = "pack ZSTD";
+		color = 1,0;
+		shortkeys {
+		}
+		commands {
+			OwnOp {
+				separateeachentry = true;
+				recursive = false;
+				start = terminalwait;
+				com = "zstd -v --rm -{Rs{Compression 1-19 (default 3)}{19}} -- {F}";
+				viewstr = "";
+				inbackground = false;
+				takedirs = false;
+				dontcd = false;
+			}
+			ReloadOp {
+				mode = current;
+				resetdirsizes = false;
+				keepfiletypes = false;
+			}
+		}
+	}
+	button {
+		position = 673;
+		title = "unpack ZSTD";
+		color = 1,0;
+		shortkeys {
+		}
+		commands {
+			OwnOp {
+				separateeachentry = true;
+				recursive = false;
+				start = terminalwait;
+				com = "zstd -dv --rm -- {F}";
+				viewstr = "";
+				inbackground = false;
+				takedirs = false;
+				dontcd = false;
+			}
+			ReloadOp {
+				mode = current;
+				resetdirsizes = false;
+				keepfiletypes = false;
+			}
+		}
+	}
+	button {
+		position = 714;
+		title = "pack LZIP";
+		color = 1,0;
+		shortkeys {
+		}
+		commands {
+			OwnOp {
+				separateeachentry = true;
+				recursive = false;
+				start = terminalwait;
+				com = "lzip -v -{Rs{Compression 0-9 (default 6)}{6}} -- {F}";
+				viewstr = "";
+				inbackground = false;
+				takedirs = false;
+				dontcd = false;
+			}
+			ReloadOp {
+				mode = current;
+				resetdirsizes = false;
+				keepfiletypes = false;
+			}
+		}
+	}
+	button {
+		position = 715;
+		title = "unpack LZIP";
+		color = 1,0;
+		shortkeys {
+		}
+		commands {
+			OwnOp {
+				separateeachentry = true;
+				recursive = false;
+				start = terminalwait;
+				com = "lzip -d -v -- {F}";
+				viewstr = "";
+				inbackground = false;
+				takedirs = false;
+				dontcd = false;
+			}
+			ReloadOp {
+				mode = current;
+				resetdirsizes = false;
+				keepfiletypes = false;
+			}
+		}
+	}
+	button {
+		position = 756;
+		title = "Command log";
+		color = 1,0;
+		shortkeys {
+			double {
+				key = "x";
+				mod = control;
+				key = "l";
+			}
+		}
+		commands {
+			ViewCommandLogOp {
 			}
 		}
 	}
@@ -8918,6 +9030,41 @@ filetypes {
 									recursive = false;
 									start = normal;
 									com = "argouml {F}";
+									viewstr = "";
+									inbackground = true;
+									takedirs = false;
+									dontcd = false;
+								}
+							}
+						}
+						subtype {
+						}
+						colormode = parent;
+						unselectcolor = 1,0;
+						selectcolor = 1,0;
+						unselectactivecolor = 1,0;
+						selectactivecolor = 1,0;
+					}
+					filetype {
+						title = "FreeCAD file";
+						pattern = "*.FCStd";
+						usepattern = true;
+						usecontent = false;
+						content {
+						}
+						type = normal;
+						patternignorecase = false;
+						patternuseregexp = false;
+						patternusefullname = false;
+						extcond = "";
+						useextcond = false;
+						ftcommands {
+							doubleclick {
+								OwnOp {
+									separateeachentry = false;
+									recursive = false;
+									start = normal;
+									com = "freecad {F}";
 									viewstr = "";
 									inbackground = true;
 									takedirs = false;
@@ -11818,6 +11965,72 @@ filetypes {
 		selectactivecolor = 1,7;
 	}
 	filetype {
+		title = "LZIP archive";
+		pattern = "*.tar.lz,*.tlz";
+		usepattern = true;
+		usecontent = false;
+		content {
+		}
+		type = normal;
+		patternignorecase = true;
+		patternuseregexp = false;
+		patternusefullname = false;
+		extcond = "";
+		useextcond = false;
+		ftcommands {
+			dnd {
+				OwnOp {
+					separateeachentry = false;
+					recursive = false;
+					start = terminalwait;
+					com = "lzip -c -d -k -- {F} | tar xvf - -C {dp}";
+					viewstr = "";
+					inbackground = false;
+					takedirs = false;
+					dontcd = false;
+				}
+				ReloadOp {
+					mode = left;
+					resetdirsizes = false;
+					keepfiletypes = false;
+				}
+				ReloadOp {
+					mode = right;
+					resetdirsizes = false;
+					keepfiletypes = false;
+				}
+			}
+			customaction {
+				name = "unlzip";
+				commands {
+					OwnOp {
+						separateeachentry = false;
+						recursive = false;
+						start = terminalwait;
+						com = "lzip -d -- {f}";
+						viewstr = "";
+						inbackground = false;
+						takedirs = false;
+						dontcd = false;
+					}
+					ReloadOp {
+						mode = current;
+						resetdirsizes = false;
+						keepfiletypes = false;
+					}
+				}
+			}
+		}
+		subtype {
+		}
+		colormode = default;
+		unselectcolor = 1,0;
+		selectcolor = 1,0;
+		unselectactivecolor = 1,0;
+		selectactivecolor = 1,0;
+		pattern_is_comma_separated = true;
+	}
+	filetype {
 		title = "Mathematical Packages";
 		pattern = "";
 		usepattern = false;
@@ -13058,6 +13271,71 @@ filetypes {
 				unselectactivecolor = 1,0;
 				selectactivecolor = 1,0;
 			}
+		}
+		colormode = default;
+		unselectcolor = 1,0;
+		selectcolor = 1,0;
+		unselectactivecolor = 1,0;
+		selectactivecolor = 1,0;
+	}
+	filetype {
+		title = "TZSTD archive";
+		pattern = ".*\\.\\(tar\\.zst$\\)\\|\\(tzst$\\)";
+		usepattern = true;
+		usecontent = false;
+		content {
+		}
+		type = normal;
+		patternignorecase = true;
+		patternuseregexp = true;
+		patternusefullname = false;
+		extcond = "";
+		useextcond = false;
+		ftcommands {
+			dnd {
+				OwnOp {
+					separateeachentry = false;
+					recursive = false;
+					start = terminalwait;
+					com = "zstd -c -d -- {F} | tar xvf - -C {dp}";
+					viewstr = "";
+					inbackground = false;
+					takedirs = false;
+					dontcd = false;
+				}
+				ReloadOp {
+					mode = left;
+					resetdirsizes = false;
+					keepfiletypes = false;
+				}
+				ReloadOp {
+					mode = right;
+					resetdirsizes = false;
+					keepfiletypes = false;
+				}
+			}
+			customaction {
+				name = "unzstd";
+				commands {
+					OwnOp {
+						separateeachentry = false;
+						recursive = false;
+						start = terminalwait;
+						com = "zstd -d --rm -- {f}";
+						viewstr = "";
+						inbackground = false;
+						takedirs = false;
+						dontcd = false;
+					}
+					ReloadOp {
+						mode = current;
+						resetdirsizes = false;
+						keepfiletypes = false;
+					}
+				}
+			}
+		}
+		subtype {
 		}
 		colormode = default;
 		unselectcolor = 1,0;
