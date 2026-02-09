@@ -29,3 +29,6 @@ Exec=freecad
 Icon=$HOME/.local/opt/FreeCAD/logo-freecad.svg
 Terminal=false
 EOF
+
+# For 3D printing.
+sudo snap install cura-slicer
