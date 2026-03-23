@@ -31,7 +31,7 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 sudo flatpak -y install flathub com.viber.Viber
 sudo apt -y install xdg-utils
 mkdir -p ~/.local/bin
-cat >> ~/.local/bin/viber << EOF
+cat > ~/.local/bin/viber << EOF
 #!/bin/bash
 flatpak run com.viber.Viber
 EOF
