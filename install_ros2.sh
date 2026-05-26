@@ -1,5 +1,10 @@
 #!/bin/bash
 ##############################################################################
+
+# Exit on error.
+set -e
+
+##############################################################################
 # Automatically figure out which ROS distro you need.
 
 . /etc/os-release
@@ -117,7 +122,7 @@ else
 fi
 
 
-sudo -E pip3 install transforms3d
+#sudo -E pip3 --break-system-packages install transforms3d
 
 # If have problem with setuptools:
 # https://github.com/pypa/setuptools/issues/4483
