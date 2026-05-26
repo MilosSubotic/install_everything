@@ -8,7 +8,10 @@ MAJOR=`echo $VERSION_ID | sed -n 's/\([0-9]\+\)\(\.[0-9]\+\)\?/\1/p'`
 
 if [[ "$ID" == "ubuntu" ]]
 then
-  if (( $MAJOR == 24 ))
+  if (( $MAJOR == 26 ))
+  then
+    ROS_DISTRO='lyrical'
+  elif (( $MAJOR == 24 ))
   then
     ROS_DISTRO='jazzy'
   elif (( $MAJOR == 22 ))
