@@ -836,11 +836,6 @@ hotkeys {
 	hotkey {
 		title = "80% Layout";
 		shortkeys {
-			double {
-				key = "l";
-				mod = control;
-				key = "1";
-			}
 		}
 		commands {
 			ChangeLayoutOp {
@@ -3597,6 +3592,29 @@ buttons {
 			SetSortmodeOp {
 				sortby = modtime;
 				sortflag = reverse;
+			}
+		}
+	}
+	button {
+		position = 112;
+		title = "labelme_yolo";
+		color = 1,0;
+		shortkeys {
+			normal {
+				key = "l";
+				mod = control;
+			}
+		}
+		commands {
+			OwnOp {
+				separateeachentry = false;
+				recursive = false;
+				start = normal;
+				com = "labelme_yolo {p}";
+				viewstr = "";
+				inbackground = false;
+				takedirs = false;
+				dontcd = false;
 			}
 		}
 	}
