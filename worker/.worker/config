@@ -849,11 +849,6 @@ hotkeys {
 	hotkey {
 		title = "Horizontal layout";
 		shortkeys {
-			double {
-				key = "l";
-				mod = control;
-				key = "2";
-			}
 		}
 		commands {
 			ChangeLayoutOp {
@@ -3612,7 +3607,7 @@ buttons {
 				start = normal;
 				com = "labelme_yolo {p}";
 				viewstr = "";
-				inbackground = false;
+				inbackground = true;
 				takedirs = false;
 				dontcd = false;
 			}
