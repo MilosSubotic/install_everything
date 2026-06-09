@@ -1,8 +1,8 @@
 #!/bin/bash
 ###############################################################################
 
-sudo apt -y install worker
-sudo apt -y install p7zip-full cdparanoia
+sudo -E apt -y install worker
+sudo -E apt -y install p7zip-full cdparanoia
 
 sudo cp backup /usr/local/bin/
 

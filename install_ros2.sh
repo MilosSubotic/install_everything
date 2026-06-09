@@ -54,31 +54,31 @@ echo "ROS_DISTRO=$ROS_DISTRO"
 
 locale  # check for UTF-8
 
-sudo apt update && sudo apt install locales
+sudo -E apt update && sudo -E apt install locales
 sudo locale-gen en_US en_US.UTF-8
 sudo update-locale LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8
 #export LANG=en_US.UTF-8
 
 locale  # verify settings
 
-sudo apt -y install software-properties-common
+sudo -E apt -y install software-properties-common
 sudo add-apt-repository universe -y
 
-sudo apt update
-sudo apt -y install curl
+sudo -E apt update
+sudo -E apt -y install curl
 curl -L https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -o ros.key
 sudo mv ros.key /usr/share/keyrings/ros-archive-keyring.gpg
 
 echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu $(. /etc/os-release && echo $UBUNTU_CODENAME) main" | sudo tee /etc/apt/sources.list.d/ros2.list > /dev/null
 
-sudo apt update
+sudo -E apt update
 
 #FIXME python3-paraview use python3-vtk7,
 # but ros-${ROS_DISTRO}-desktop needs python3-vtk9,
 # and that is where conflict occurs.
-sudo apt -y purge python3-paraview
+sudo -E apt -y purge python3-paraview
 
-sudo apt -y install \
+sudo -E apt -y install \
     python3-colcon-ros \
     python3-colcon-package-selection \
     ros-${ROS_DISTRO}-desktop \
@@ -106,14 +106,14 @@ sudo apt -y install \
 
 if (( $MAJOR >= 24 ))
 then
-    sudo apt -y install \
+    sudo -E apt -y install \
         python3-rosdep \
         ros-$ROS_DISTRO-ros-gz-sim \
         ros-$ROS_DISTRO-ros-gz-bridge \
         ros-$ROS_DISTRO-gz-ros2-control
         
 else
-    sudo apt -y install \
+    sudo -E apt -y install \
         python3-rosdep2 \
         ros-${ROS_DISTRO}-gazebo-plugins \
         ros-${ROS_DISTRO}-gazebo-ros \
